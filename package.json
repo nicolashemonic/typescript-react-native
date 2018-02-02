@@ -8,11 +8,14 @@
     "start-android": "npm run build && concurrently -r \"tsc -w\" \"react-native run-android\"",
     "test": "jest --coverage",
     "clean": "rimraf artifacts",
+    "clean-node": "rimraf node_modules",
     "build": "npm run clean && tsc"
   },
   "dependencies": {
+    "@types/react-navigation": "^1.0.30",
     "react": "16.2.0",
-    "react-native": "0.52.2"
+    "react-native": "0.52.2",
+    "react-navigation": "^1.0.0-beta.27"
   },
   "devDependencies": {
     "@types/jest": "^22.1.1",
