@@ -5,20 +5,20 @@ import {
     View
 } from 'react-native';
 
-import style from "../styles/planning";
+import style from "../styles/rates";
 
 export default class PlanningScreen extends Component<any, any> {
     static navigationOptions = {
-        title: 'Planning',
+        title: 'Rates',
     };
     render() {
         const { navigate } = this.props.navigation;
         return (
-            <View style={style.planningView}>
+            <View style={style.ratesView}>
                 <View style={style.buttonView}>
                     <Button
-                        title="View Rates"
-                        onPress={() => navigate("Rates")}
+                        title="View Planning"
+                        onPress={() => navigate("Planning")}
                     />
                 </View>
             </View>

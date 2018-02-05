@@ -13,11 +13,13 @@
         "sourceMap": true,
         "noImplicitReturns": true,
         "noUnusedParameters": true,
-        "noUnusedLocals": true
+        "noUnusedLocals": true,
+        "baseUrl": "./"
     },
     "include": [
         "src/**/*.ts",
-        "src/**/*.tsx"
+        "src/**/*.tsx",
+        "static/**/*.*"
     ],
     "types": [
         "react",

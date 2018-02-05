@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    planningView: {
+    ratesView: {
         flex: 1
     },
     buttonView: {
