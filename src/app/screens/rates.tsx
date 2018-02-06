@@ -13,13 +13,16 @@ import style from "../styles/rates";
 
 export default class PlanningScreen extends Component<any, any> {
     static navigationOptions = {
-        title: 'Rates',
+        title: 'Tarifs',
     };
 
     ActionSheet: any;
 
     handlePress = (index) => {
-        console.log(index);
+        const { navigate } = this.props.navigation;
+        if (index !== 0) {
+            navigate("Planning");
+        }
     }
 
     showActionSheet = () => {
