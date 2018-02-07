@@ -19,7 +19,8 @@ export default class LoginScreen extends Component<any, any> {
         headerStyle: {
             display: "none"
         }
-    };
+    }
+
     render() {
         const { navigate } = this.props.navigation;
         const Touchable = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
@@ -41,3 +42,5 @@ export default class LoginScreen extends Component<any, any> {
         );
     }
 }
+
+//https://github.com/react-navigation/react-navigation/issues/1878

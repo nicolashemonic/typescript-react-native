@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 export default StyleSheet.create({
     loginView: {
@@ -9,6 +9,9 @@ export default StyleSheet.create({
         flex: 1,
         padding: 20,
     },
+    formText: {
+        marginBottom: 20
+    },
     password: {
         marginTop: 20
     },
@@ -16,7 +19,12 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: "flex-start",
         flexDirection: "row",
-        justifyContent: "flex-start",
+        justifyContent: "flex-end",
         paddingTop: 20
+    },
+    button: {
+        paddingLeft: Platform.select({
+            ios: 0
+        })
     }
 });

@@ -4,12 +4,15 @@ export default StyleSheet.create({
     view: {},
     text: {
         color: "#939393",
-        paddingHorizontal: 5 
+        marginBottom: 5
     },
     textInput: {
         color: "#222",
-        height: 40,
+        height: 32,
         padding: 5,
-        fontSize: 18
+        fontSize: 18,
+        borderColor: "#e2e2e2",
+        borderWidth: 1
     }
 });
+
