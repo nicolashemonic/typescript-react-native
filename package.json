@@ -16,7 +16,7 @@
     "react": "16.2.0",
     "react-native": "0.52.2",
     "react-native-actionsheet": "^2.3.0",
-    "react-navigation": "^1.0.0-beta.27"
+    "react-navigation": "^1.0.0"
   },
   "devDependencies": {
     "@types/jest": "^22.1.1",

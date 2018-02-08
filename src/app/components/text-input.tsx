@@ -20,15 +20,14 @@ export default class TextInput extends React.Component<any, any> {
     }
 
     componentWillMount() {
-        this._animatedIsFocused = new Animated.Value(this.state.value === "" ? 0 : 1);
+        this._animatedIsFocused = new Animated.Value(this.props.value === "" ? 0 : 1);
     }
 
     componentDidUpdate() {
         Animated.timing(this._animatedIsFocused, {
             toValue: this.state.isFocused || this.props.value !== "" ? 1 : 0,
-            duration: 200
+            duration: 100
         }).start();
-
     }
 
     handleFocus = () => this.setState({ isFocused: true });
@@ -37,14 +36,14 @@ export default class TextInput extends React.Component<any, any> {
 
     render() {
         const style = StyleSheet.create({
-            view: {
-                paddingTop: 18
-            },
+            view: {},
             textInput: {
                 color: "#222",
-                height: 26,
                 fontSize: 14,
-                borderBottomColor: "#e2e2e2",
+                paddingTop: 20,
+                paddingBottom: 10,
+                paddingHorizontal: 0,
+                borderBottomColor: "#028eca",
                 borderBottomWidth: 1
             }
         });
@@ -54,7 +53,7 @@ export default class TextInput extends React.Component<any, any> {
             left: 0,
             top: this._animatedIsFocused.interpolate({
                 inputRange: [0, 1],
-                outputRange: [18, 0]
+                outputRange: [25, 0]
             }),
             fontSize: this._animatedIsFocused.interpolate({
                 inputRange: [0, 1],
@@ -78,7 +77,11 @@ export default class TextInput extends React.Component<any, any> {
                 onFocus={this.handleFocus}
                 onBlur={this.handleBlur}
                 value={this.props.value}
-                secureTextEntry={this.props.secureTextEntry} />
+                keyboardType={this.props.keyboardType ? this.props.keyboardType : "default"}
+                autoCorrect={this.props.autoCorrect ? this.props.autoCorrect : true}
+                secureTextEntry={this.props.secureTextEntry}
+                onSubmitEditing={this.props.onSubmitEditing}
+                ref={this.props.inputRef} />
         </View>;
     }
 }

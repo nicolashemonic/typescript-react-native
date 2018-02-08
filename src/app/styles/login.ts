@@ -10,7 +10,9 @@ export default StyleSheet.create({
         padding: 20,
     },
     formText: {
-        marginBottom: 20
+        marginVertical: 20,
+        fontSize: 16,
+        color: "#222"
     },
     password: {
         marginTop: 20
@@ -20,7 +22,7 @@ export default StyleSheet.create({
         alignItems: "flex-start",
         flexDirection: "row",
         justifyContent: "flex-end",
-        paddingTop: 20
+        paddingTop: 40
     },
     button: {
         paddingLeft: Platform.select({
