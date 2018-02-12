@@ -22,6 +22,20 @@ export default class PlanningScreen extends Component<any, any> {
                         onPress={() => navigate("Rates")}
                     />
                 </View>
+                <View style={style.buttonView}>
+                    <Button
+                        color="#028eca"
+                        title="Modifier une chambre"
+                        onPress={() => navigate("Rooms")}
+                    />
+                </View>
+                <View style={style.buttonView}>
+                    <Button
+                        color="#028eca"
+                        title="Rates"
+                        onPress={() => navigate("SelectRates")}
+                    />
+                </View>
             </View>
         );
     }
