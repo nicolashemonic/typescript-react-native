@@ -9,6 +9,7 @@ import PlanningScreen from "./screens/planning";
 import RatesScreen from "./screens/rates";
 import RoomsScreen from "./screens/rooms";
 import SelectRatesScreen from "./screens/select-rates";
+import SelectActionScreen from "./screens/select-action";
 
 import {
   StackNavigator
@@ -21,5 +22,6 @@ export default StackNavigator({
   Rates: { screen: RatesScreen },
   Rooms: { screen: RoomsScreen },
 
-  SelectRates: { screen: SelectRatesScreen }
+  SelectRates: { screen: SelectRatesScreen },
+  SelectAction: { screen: SelectActionScreen }
 });
