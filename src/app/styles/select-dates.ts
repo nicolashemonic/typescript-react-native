@@ -1,12 +1,11 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    ratesView: {
+    datesView: {
         flex: 1,
-        backgroundColor: "#fff",
-        paddingBottom: 55
+        backgroundColor: "#fff"
     },
-    ratesFooter: {
+    datesFooter: {
         position: "absolute",
         width: "100%",
         bottom: 0,
@@ -14,20 +13,20 @@ export default StyleSheet.create({
         borderTopWidth: 1,
         borderTopColor: "#e2e2e2"
     },
-    ratesFooterInner: {
+    datesFooterInner: {
         flex: 1,
         flexDirection: "row"
     },
-    ratesTextView: {
+    datesTextView: {
         flex: 3,
         paddingLeft: 20,
         justifyContent: "center"
     },
-    ratesText: {
+    datesText: {
         color: "#222",
         fontSize: 16
     },
-    ratesButton: {
+    datesButton: {
         flex: 1,
         paddingHorizontal: 10,
         paddingVertical: 20

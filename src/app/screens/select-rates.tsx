@@ -11,7 +11,7 @@ import ListItem from "../components/list-item-check";
 
 import style from "../styles/select-rates";
 
-export default class PlanningScreen extends Component<any, any> {
+export default class SelectRatesScreen extends Component<any, any> {
     static navigationOptions = {
         title: 'Pick rates to edit',
     };
@@ -64,6 +64,7 @@ export default class PlanningScreen extends Component<any, any> {
     }
 
     render() {
+        const { navigate } = this.props.navigation;
         const selectedRates = this.state.rates.filter(rate => rate.selected);
 
         return (
@@ -82,7 +83,7 @@ export default class PlanningScreen extends Component<any, any> {
                             <Button
                                 title="next"
                                 color="#028eca"
-                                onPress={() => false}
+                                onPress={() => navigate("SelectDates")}
                                 disabled={!selectedRates.length} />
                         </View>
                     </View>

@@ -8,7 +8,7 @@ import {
     Button
 } from "react-native";
 
-export default class PlanningScreen extends Component<any, any> {
+export default class RoomsScreen extends Component<any, any> {
     static navigationOptions = {
         title: 'Chambres',
     };

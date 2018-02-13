@@ -8,7 +8,7 @@ import {
     View
 } from "react-native";
 
-import FontAwesome, { Icons } from 'react-native-fontawesome';
+// import FontAwesome, { Icons } from 'react-native-fontawesome';
 
 import style from "../styles/list-item-check";
 

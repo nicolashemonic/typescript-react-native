@@ -13,7 +13,7 @@ import style from "../styles/splash";
 
 import availproLogo from "static/availpro.png";
 
-export default class LoginScreen extends Component<any, any> {
+export default class SplahScreen extends Component<any, any> {
     static navigationOptions = {
         title: 'Availpro',
         headerStyle: {

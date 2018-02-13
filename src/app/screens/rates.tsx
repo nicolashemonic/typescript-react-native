@@ -11,7 +11,7 @@ import ListItem from "../components/list-item";
 
 import style from "../styles/rates";
 
-export default class PlanningScreen extends Component<any, any> {
+export default class RatesScreen extends Component<any, any> {
     static navigationOptions = {
         title: 'Tarifs',
     };

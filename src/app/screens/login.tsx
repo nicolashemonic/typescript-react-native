@@ -10,7 +10,7 @@ import style from "../styles/login";
 
 import TextInput from "../components/text-input";
 
-export default class PlanningScreen extends Component<any, any> {
+export default class LoginScreen extends Component<any, any> {
     navigationWillFocus: any;
     inputRef = [];
 

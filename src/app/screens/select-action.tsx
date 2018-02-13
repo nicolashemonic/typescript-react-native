@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 
 import {
-    FlatList,
     View,
     Text,
-    Button,
     Platform,
     TouchableNativeFeedback,
     TouchableOpacity
 } from "react-native";
 
-import ListItem from "../components/list-item-check";
-
 import style from "../styles/select-action";
 
-export default class PlanningScreen extends Component<any, any> {
+export default class SelectActionScreen extends Component<any, any> {
     static navigationOptions = {
         title: 'What do you wish to do?',
     };
@@ -25,7 +21,7 @@ export default class PlanningScreen extends Component<any, any> {
         }
     }
 
-    selectAction = (action) => {
+    selectAction = () => {
         this.setState({
         })
     }

@@ -9,20 +9,22 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: "center",
         flexDirection: "row",
-        justifyContent: "center"
+        justifyContent: "center",
+        backgroundColor: "#82b00a"
     },
     closeActionWrapper: {
         flex: 1,
         alignItems: "center",
         flexDirection: "row",
-        justifyContent: "center"
+        justifyContent: "center",
+        backgroundColor: "#d0534e"
     },
     openAction: {
         fontSize: 20,
-        color: "#82b00a"
+        color: "#fff"
     },
     closeAction: {
         fontSize: 20,
-        color: "#d0534e"
+        color: "#fff"
     }
 });

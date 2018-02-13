@@ -10,6 +10,8 @@ import RatesScreen from "./screens/rates";
 import RoomsScreen from "./screens/rooms";
 import SelectRatesScreen from "./screens/select-rates";
 import SelectActionScreen from "./screens/select-action";
+import SelectDatesScreen from "./screens/select-dates";
+import SelectConfirmScreen from "./screens/select-confirm";
 
 import {
   StackNavigator
@@ -23,5 +25,7 @@ export default StackNavigator({
   Rooms: { screen: RoomsScreen },
 
   SelectRates: { screen: SelectRatesScreen },
-  SelectAction: { screen: SelectActionScreen }
+  SelectAction: { screen: SelectActionScreen },
+  SelectDates: { screen: SelectDatesScreen },
+  SelectConfirm: { screen: SelectConfirmScreen }
 });
