@@ -1,4 +1,4 @@
-import { AppRegistry } from 'react-native';
-import App from './app';
+import { AppRegistry } from "react-native";
+import App from "./app";
 
-AppRegistry.registerComponent('ReactNativeCli', () => App);
+AppRegistry.registerComponent("ReactNativeCli", () => App);
