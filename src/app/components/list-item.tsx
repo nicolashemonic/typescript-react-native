@@ -20,20 +20,22 @@ export default props => (
 		<Touchable
 			style={style.listItemTouchable}
 			onPress={() => props.onPress(props.item)}>
-			<View style={style.listItemAction}>
-				<View
-					style={[
-						style.listItemCheckbox,
-						props.item.selected ? style.listItemCheckboxSelected : null
-					]}>
-					{props.item.selected && (
-						<FontAwesome style={style.listItemCheckboxIcon}>
-							{Icons.check}
-						</FontAwesome>
-					)}
+			<View style={style.listItemInner}>
+				<View style={style.listItemAction}>
+					<View
+						style={[
+							style.listItemCheckbox,
+							props.item.selected ? style.listItemCheckboxSelected : null
+						]}>
+						{props.item.selected && (
+							<FontAwesome style={style.listItemCheckboxIcon}>
+								{Icons.check}
+							</FontAwesome>
+						)}
+					</View>
 				</View>
+				<Text style={style.listItemText}>{props.item.key}</Text>
 			</View>
-			<Text style={style.listItemText}>{props.item.key}</Text>
 		</Touchable>
 	</View>
 );

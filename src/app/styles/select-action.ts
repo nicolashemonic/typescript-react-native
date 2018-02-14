@@ -5,13 +5,15 @@ export default StyleSheet.create({
 		flex: 1,
 		backgroundColor: "#fff"
 	},
-	openActionWrapper: {
+	openActionTouchable: {},
+	openActionInner: {
 		flex: 1,
 		alignItems: "center",
 		justifyContent: "center",
 		backgroundColor: "#82b00a"
 	},
-	closeActionWrapper: {
+	closeActionTouchable: {},
+	closeActionInner: {
 		flex: 1,
 		alignItems: "center",
 		justifyContent: "center",

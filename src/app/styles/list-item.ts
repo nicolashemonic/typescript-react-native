@@ -5,7 +5,8 @@ export default StyleSheet.create({
 		borderBottomColor: "#e2e2e2",
 		borderBottomWidth: StyleSheet.hairlineWidth
 	},
-	listItemTouchable: {
+	listItemTouchable: {},
+	listItemInner: {
 		flex: 1,
 		flexDirection: "row",
 		padding: 20

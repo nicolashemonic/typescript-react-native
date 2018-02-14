@@ -33,16 +33,20 @@ export default class SelectActionScreen extends Component<any, any> {
 		return (
 			<View style={style.actionView}>
 				<Touchable
-					style={style.closeActionWrapper}
+					style={style.closeActionTouchable}
 					onPress={() => navigate("SelectRates")}>
-					<FontAwesome style={style.iconAction}>{Icons.lock}</FontAwesome>
-					<Text style={style.closeAction}>Close one or more rates</Text>
+					<View style={style.closeActionInner}>
+						<FontAwesome style={style.iconAction}>{Icons.lock}</FontAwesome>
+						<Text style={style.closeAction}>Close one or more rates</Text>
+					</View>
 				</Touchable>
 				<Touchable
-					style={style.openActionWrapper}
+					style={style.openActionTouchable}
 					onPress={() => navigate("SelectRates")}>
-					<FontAwesome style={style.iconAction}>{Icons.unlock}</FontAwesome>
-					<Text style={style.openAction}>Open one or more rates</Text>
+					<View style={style.openActionInner}>
+						<FontAwesome style={style.iconAction}>{Icons.unlock}</FontAwesome>
+						<Text style={style.openAction}>Open one or more rates</Text>
+					</View>
 				</Touchable>
 			</View>
 		);
