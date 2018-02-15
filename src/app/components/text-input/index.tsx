@@ -4,6 +4,8 @@ import { TextInput as TextInputNative, View, Animated } from "react-native";
 
 import styles from "./styles";
 
+import colors from "../../styles/colors";
+
 export default class TextInput extends React.Component<any, any> {
 	isFocusedAnimation: Animated.Value;
 
@@ -45,7 +47,7 @@ export default class TextInput extends React.Component<any, any> {
 			}),
 			color: this.isFocusedAnimation.interpolate({
 				inputRange: [0, 1],
-				outputRange: ["#939393", "#222"]
+				outputRange: [colors.text.secondary, colors.text.primary]
 			})
 		};
 

@@ -18,7 +18,6 @@ export default StyleSheet.create({
 		justifyContent: "center"
 	},
 	actionFooterText: {
-		color: colors.text.primary,
 		fontSize: 16
 	},
 	actionFooterButtonWrapper: {

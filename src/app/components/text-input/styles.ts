@@ -5,8 +5,6 @@ import colors from "../../styles/colors";
 export default StyleSheet.create({
 	textInput: {},
 	textInputNative: {
-		color: colors.text.primary,
-		fontSize: 14,
 		paddingTop: 20,
 		paddingBottom: 10,
 		paddingHorizontal: 0,

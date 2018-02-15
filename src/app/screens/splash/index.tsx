@@ -33,7 +33,7 @@ export default class SplahScreen extends Component<any, any> {
 						style={style.splashLoginLink}
 						accessibilityComponentType="button"
 						onPress={() => navigate("Login")}>
-						<Text style={style.splashLoginText}>Se connecter</Text>
+						<Text style={style.splashLoginText}>Log In</Text>
 					</Touchable>
 				</View>
 			</View>

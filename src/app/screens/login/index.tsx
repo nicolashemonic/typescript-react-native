@@ -11,7 +11,7 @@ export default class LoginScreen extends Component<any, any> {
 	inputRef = [];
 
 	static navigationOptions = {
-		title: "Connectez-vous"
+		title: "Log In"
 	};
 
 	constructor(props) {
@@ -66,7 +66,7 @@ export default class LoginScreen extends Component<any, any> {
 		return (
 			<View style={style.login}>
 				<Text style={style.loginFormText}>
-					Identifiez-vous avec votre compte Availpro
+					Log in with your Availpro account.
 				</Text>
 				<TextInput
 					label="email"
@@ -78,7 +78,7 @@ export default class LoginScreen extends Component<any, any> {
 					onSubmitEditing={() => this.inputRef["password"].focus()}
 				/>
 				<TextInput
-					label="mot de passe"
+					label="password"
 					value={this.state.password}
 					onChangeText={this.onChangePassword}
 					secureTextEntry={true}
@@ -90,7 +90,7 @@ export default class LoginScreen extends Component<any, any> {
 				<View style={style.loginFormButton}>
 					<Button
 						color="#028eca"
-						title="Valider"
+						title="Log In"
 						onPress={() => navigate("Planning")}
 					/>
 				</View>

@@ -15,7 +15,7 @@ export default class PlanningScreen extends Component<any, any> {
 				<View style={style.planningModifyRates}>
 					<Button
 						color="#028eca"
-						title="Modify rates"
+						title="modify rates"
 						onPress={() => navigate("SelectAction")}
 					/>
 				</View>

@@ -9,9 +9,7 @@ export default StyleSheet.create({
 		backgroundColor: colors.background.primary
 	},
 	loginFormText: {
-		marginVertical: 20,
-		fontSize: 16,
-		color: colors.text.primary
+		marginVertical: 20
 	},
 	loginFormPassword: {
 		marginTop: 20

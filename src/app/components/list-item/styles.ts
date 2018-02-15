@@ -12,9 +12,7 @@ export default StyleSheet.create({
 		flexDirection: "row",
 		padding: 20
 	},
-	listItemText: {
-		color: colors.text.primary
-	},
+	listItemText: {},
 	listItemAction: {
 		paddingRight: 10
 	},

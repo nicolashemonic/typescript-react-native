@@ -8,13 +8,14 @@ export default StyleSheet.create({
 		backgroundColor: colors.background.primary
 	},
 	openActionTouchable: {
-		flex: 1
+		flex: 1,
+		borderTopWidth: StyleSheet.hairlineWidth,
+		borderTopColor: colors.border.primary
 	},
 	openActionInner: {
 		flex: 1,
 		alignItems: "center",
-		justifyContent: "center",
-		backgroundColor: colors.alerting.validation
+		justifyContent: "center"
 	},
 	closeActionTouchable: {
 		flex: 1
@@ -22,20 +23,22 @@ export default StyleSheet.create({
 	closeActionInner: {
 		flex: 1,
 		alignItems: "center",
-		justifyContent: "center",
-		backgroundColor: colors.alerting.attention
+		justifyContent: "center"
 	},
-	iconAction: {
-		fontSize: 50,
-		color: colors.text.bright,
+	closeActionIcon: {
+		fontSize: 40,
+		color: colors.alerting.attention,
+		marginBottom: 20
+	},
+	openActionIcon: {
+		fontSize: 40,
+		color: colors.alerting.validation,
 		marginBottom: 20
 	},
 	openAction: {
-		fontSize: 20,
-		color: colors.text.bright
+		fontSize: 16
 	},
 	closeAction: {
-		fontSize: 20,
-		color: colors.text.bright
+		fontSize: 16
 	}
 });

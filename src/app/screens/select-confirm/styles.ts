@@ -14,18 +14,18 @@ export default StyleSheet.create({
 		flex: 0,
 		paddingHorizontal: 20,
 		paddingVertical: 40,
-		backgroundColor: colors.alerting.attention,
+		borderBottomWidth: StyleSheet.hairlineWidth,
+		borderBottomColor: colors.border.primary,
 		alignItems: "center",
 		justifyContent: "center"
 	},
 	iconAction: {
 		fontSize: 40,
-		color: colors.text.bright,
-		marginBottom: 10
+		color: colors.alerting.attention,
+		marginBottom: 20
 	},
 	titleText: {
-		fontSize: 20,
-		color: colors.text.bright
+		fontSize: 18
 	},
 	sectionsView: {
 		flex: 0,
@@ -36,20 +36,17 @@ export default StyleSheet.create({
 		marginBottom: 40
 	},
 	sectionTitleText: {
-		fontSize: 18,
-		color: colors.text.primary
+		fontSize: 18
 	},
 	sectionValueText: {
 		fontSize: 14,
-		color: colors.text.primary,
-		marginTop: 10
+		marginTop: 10,
+		color: colors.text.primary
 	},
 	buttonView: {
 		flex: 0,
 		paddingHorizontal: 20,
 		paddingVertical: 20,
-		alignItems: "center",
-		borderTopWidth: StyleSheet.hairlineWidth,
-		borderTopColor: colors.border.primary
+		alignItems: "center"
 	}
 });
