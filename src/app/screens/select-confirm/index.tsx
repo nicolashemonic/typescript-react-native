@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 import { View, Text, ScrollView } from "react-native";
 
-import Button from "../components/button";
+import Button from "../../components/button";
 
-import style from "../styles/select-confirm";
+import style from "./styles";
 
 import FontAwesome, { Icons } from "react-native-fontawesome";
 

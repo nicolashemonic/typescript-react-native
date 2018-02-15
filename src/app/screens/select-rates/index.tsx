@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
-import { FlatList, View, Text } from "react-native";
+import { FlatList, View } from "react-native";
 
-import Button from "../components/button";
+import ListItem from "../../components/list-item";
 
-import ListItem from "../components/list-item";
+import ActionFooter from "../../components/action-footer";
 
-import style from "../styles/select-rates";
+import styles from "./styles";
 
 export default class SelectRatesScreen extends Component<any, any> {
 	static navigationOptions = {
@@ -65,27 +65,19 @@ export default class SelectRatesScreen extends Component<any, any> {
 		const selectedRates = this.state.rates.filter(rate => rate.selected);
 
 		return (
-			<View style={style.ratesView}>
+			<View style={styles.selectRates}>
 				<FlatList
 					data={this.state.rates}
 					renderItem={({ item }) => (
 						<ListItem item={item} onPress={this.toggleRate} />
 					)}
 				/>
-				<View style={style.ratesFooter}>
-					<View style={style.ratesFooterInner}>
-						<View style={style.ratesTextView}>
-							<Text style={style.ratesText}>{this.selectedRatesLabel()}</Text>
-						</View>
-						<View style={style.ratesButton}>
-							<Button
-								title="next"
-								onPress={() => navigate("SelectDates")}
-								disabled={!selectedRates.length}
-							/>
-						</View>
-					</View>
-				</View>
+				<ActionFooter
+					style={styles.selectRatesActionFooter}
+					text={this.selectedRatesLabel()}
+					onPress={() => navigate("SelectDates")}
+					disabled={!selectedRates.length}
+				/>
 			</View>
 		);
 	}

@@ -10,31 +10,31 @@ import {
 
 import FontAwesome, { Icons } from "react-native-fontawesome";
 
-import style from "../styles/list-item";
+import styles from "./styles";
 
 const Touchable =
 	Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
 
 export default props => (
-	<View style={style.listItem}>
+	<View style={styles.listItem}>
 		<Touchable
-			style={style.listItemTouchable}
+			style={styles.listItemTouchable}
 			onPress={() => props.onPress(props.item)}>
-			<View style={style.listItemInner}>
-				<View style={style.listItemAction}>
+			<View style={styles.listItemInner}>
+				<View style={styles.listItemAction}>
 					<View
 						style={[
-							style.listItemCheckbox,
-							props.item.selected ? style.listItemCheckboxSelected : null
+							styles.listItemCheckbox,
+							props.item.selected ? styles.listItemCheckboxSelected : null
 						]}>
 						{props.item.selected && (
-							<FontAwesome style={style.listItemCheckboxIcon}>
+							<FontAwesome style={styles.listItemCheckboxIcon}>
 								{Icons.check}
 							</FontAwesome>
 						)}
 					</View>
 				</View>
-				<Text style={style.listItemText}>{props.item.key}</Text>
+				<Text style={styles.listItemText}>{props.item.key}</Text>
 			</View>
 		</Touchable>
 	</View>

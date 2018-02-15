@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 import { Button, View, Text } from "react-native";
 
-import style from "../styles/login";
+import style from "./styles";
 
-import TextInput from "../components/text-input";
+import TextInput from "../../components/text-input";
 
 export default class LoginScreen extends Component<any, any> {
 	navigationWillFocus: any;
@@ -64,37 +64,35 @@ export default class LoginScreen extends Component<any, any> {
 	render() {
 		const { navigate } = this.props.navigation;
 		return (
-			<View style={style.loginView}>
-				<View style={style.formView}>
-					<Text style={style.formText}>
-						Identifiez-vous avec votre compte Availpro
-					</Text>
-					<TextInput
-						label="email"
-						value={this.state.email}
-						onChangeText={this.onChangeEmail}
-						keyboardType="email-address"
-						autoCorrect={false}
-						inputRef={ref => this.addInputRef("email", ref)}
-						onSubmitEditing={() => this.inputRef["password"].focus()}
+			<View style={style.login}>
+				<Text style={style.loginFormText}>
+					Identifiez-vous avec votre compte Availpro
+				</Text>
+				<TextInput
+					label="email"
+					value={this.state.email}
+					onChangeText={this.onChangeEmail}
+					keyboardType="email-address"
+					autoCorrect={false}
+					inputRef={ref => this.addInputRef("email", ref)}
+					onSubmitEditing={() => this.inputRef["password"].focus()}
+				/>
+				<TextInput
+					label="mot de passe"
+					value={this.state.password}
+					onChangeText={this.onChangePassword}
+					secureTextEntry={true}
+					style={style.loginFormPassword}
+					autoCorrect={false}
+					inputRef={ref => this.addInputRef("password", ref)}
+					onSubmitEditing={this.submit}
+				/>
+				<View style={style.loginFormButton}>
+					<Button
+						color="#028eca"
+						title="Valider"
+						onPress={() => navigate("Planning")}
 					/>
-					<TextInput
-						label="mot de passe"
-						value={this.state.password}
-						onChangeText={this.onChangePassword}
-						secureTextEntry={true}
-						style={style.password}
-						autoCorrect={false}
-						inputRef={ref => this.addInputRef("password", ref)}
-						onSubmitEditing={this.submit}
-					/>
-					<View style={style.buttonView}>
-						<Button
-							color="#028eca"
-							title="Valider"
-							onPress={() => navigate("Planning")}
-						/>
-					</View>
 				</View>
 			</View>
 		);

@@ -1,32 +1,25 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-	datesView: {
-		flex: 1,
-		backgroundColor: "#fff"
-	},
-	datesFooter: {
-		position: "absolute",
-		width: "100%",
-		bottom: 0,
+	actionFooter: {
 		backgroundColor: "#fff",
 		borderTopWidth: 1,
 		borderTopColor: "#e2e2e2"
 	},
-	datesFooterInner: {
+	actionFooterInner: {
 		flex: 1,
 		flexDirection: "row"
 	},
-	datesTextView: {
+	actionFooterTextWrapper: {
 		flex: 3,
 		paddingLeft: 20,
 		justifyContent: "center"
 	},
-	datesText: {
+	actionFooterText: {
 		color: "#222",
 		fontSize: 16
 	},
-	datesButton: {
+	actionFooterButtonWrapper: {
 		flex: 1,
 		paddingHorizontal: 10,
 		paddingVertical: 15,

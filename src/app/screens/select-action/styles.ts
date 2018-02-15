@@ -1,18 +1,22 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-	actionView: {
+	selectAction: {
 		flex: 1,
 		backgroundColor: "#fff"
 	},
-	openActionTouchable: {},
+	openActionTouchable: {
+		flex: 1
+	},
 	openActionInner: {
 		flex: 1,
 		alignItems: "center",
 		justifyContent: "center",
 		backgroundColor: "#82b00a"
 	},
-	closeActionTouchable: {},
+	closeActionTouchable: {
+		flex: 1
+	},
 	closeActionInner: {
 		flex: 1,
 		alignItems: "center",

@@ -8,7 +8,7 @@ import {
 	TouchableOpacity
 } from "react-native";
 
-import style from "../styles/select-action";
+import style from "./styles";
 
 import FontAwesome, { Icons } from "react-native-fontawesome";
 
@@ -22,16 +22,12 @@ export default class SelectActionScreen extends Component<any, any> {
 		this.state = {};
 	}
 
-	selectAction = () => {
-		this.setState({});
-	};
-
 	render() {
 		const { navigate } = this.props.navigation;
 		const Touchable =
 			Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
 		return (
-			<View style={style.actionView}>
+			<View style={style.selectAction}>
 				<Touchable
 					style={style.closeActionTouchable}
 					onPress={() => navigate("SelectRates")}>

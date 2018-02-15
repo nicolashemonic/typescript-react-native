@@ -1,14 +1,13 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-	planningView: {
+	selectDates: {
 		flex: 1,
 		backgroundColor: "#fff"
 	},
-	buttonView: {
-		flex: 1,
-		alignItems: "center",
-		flexDirection: "row",
-		justifyContent: "center"
+	selectDatesActionFooter: {
+		position: "absolute",
+		width: "100%",
+		bottom: 0
 	}
 });
