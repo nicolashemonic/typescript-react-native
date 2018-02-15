@@ -14,19 +14,17 @@ const Touchable =
 	Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
 
 export default props => {
-	const Button = props.disabled ? View : Touchable;
-
-	return (
-		<Button
-			style={[styles.button, props.disabled ? styles.buttonDisabled : null]}
-			onPress={props.disabled ? undefined : props.onPress}>
-			<Text
-				style={[
-					styles.buttonText,
-					props.disabled ? styles.buttonTextDisabled : null
-				]}>
+	return props.disabled ? (
+		<View style={[styles.button, styles.buttonDisabled]}>
+			<Text style={[styles.buttonText, styles.buttonTextDisabled]}>
 				{props.title}
 			</Text>
-		</Button>
+		</View>
+	) : (
+		<View style={styles.button}>
+			<Touchable onPress={props.onPress}>
+				<Text style={styles.buttonText}>{props.title}</Text>
+			</Touchable>
+		</View>
 	);
 };

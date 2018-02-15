@@ -17,9 +17,7 @@ const Touchable =
 
 export default props => (
 	<View style={styles.listItem}>
-		<Touchable
-			style={styles.listItemTouchable}
-			onPress={() => props.onPress(props.item)}>
+		<Touchable onPress={() => props.onPress(props.item)}>
 			<View style={styles.listItemInner}>
 				<View style={styles.listItemAction}>
 					<View
