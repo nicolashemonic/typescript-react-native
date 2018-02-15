@@ -15,7 +15,7 @@ const Touchable =
 
 export default props => {
 	return props.disabled ? (
-		<View style={[styles.button, styles.buttonDisabled]}>
+		<View style={styles.button}>
 			<Text style={[styles.buttonText, styles.buttonTextDisabled]}>
 				{props.title}
 			</Text>
