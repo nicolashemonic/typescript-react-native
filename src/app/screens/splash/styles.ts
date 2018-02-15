@@ -1,9 +1,11 @@
 import { StyleSheet } from "react-native";
 
+import colors from "../../styles/colors";
+
 export default StyleSheet.create({
 	splash: {
 		flex: 1,
-		backgroundColor: "#056693"
+		backgroundColor: colors.brand.primary
 	},
 	splashLogo: {
 		flex: 1,
@@ -21,7 +23,7 @@ export default StyleSheet.create({
 	},
 	splashLoginLink: {},
 	splashLoginText: {
-		color: "white",
+		color: colors.text.bright,
 		padding: 8,
 		fontSize: 20
 	}

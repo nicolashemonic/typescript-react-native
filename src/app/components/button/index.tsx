@@ -15,16 +15,16 @@ const Touchable =
 
 export default props => {
 	return props.disabled ? (
-		<View style={styles.button}>
+		<View style={[styles.button, styles.buttonDisabled]}>
 			<Text style={[styles.buttonText, styles.buttonTextDisabled]}>
 				{props.title}
 			</Text>
 		</View>
 	) : (
-		<View style={styles.button}>
-			<Touchable onPress={props.onPress}>
+		<Touchable onPress={props.onPress}>
+			<View style={styles.button}>
 				<Text style={styles.buttonText}>{props.title}</Text>
-			</Touchable>
-		</View>
+			</View>
+		</Touchable>
 	);
 };

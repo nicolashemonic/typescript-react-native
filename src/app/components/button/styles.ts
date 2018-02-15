@@ -1,19 +1,22 @@
 import { StyleSheet } from "react-native";
 
+import colors from "../../styles/colors";
+
 export default StyleSheet.create({
 	button: {
-		overflow: "hidden",
-		borderRadius: 4
-	},
-	buttonText: {
 		paddingVertical: 10,
 		paddingHorizontal: 15,
-		backgroundColor: "#f76401",
+		backgroundColor: colors.brand.emphasis,
+		borderRadius: 4
+	},
+	buttonDisabled: {
+		backgroundColor: colors.background.secondary
+	},
+	buttonText: {
 		fontSize: 14,
-		color: "#fff"
+		color: colors.text.bright
 	},
 	buttonTextDisabled: {
-		backgroundColor: "#ebebeb",
-		color: "#939393"
+		color: colors.text.secondary
 	}
 });

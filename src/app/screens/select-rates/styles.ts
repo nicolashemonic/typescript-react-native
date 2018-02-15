@@ -1,9 +1,11 @@
 import { StyleSheet } from "react-native";
 
+import colors from "../../styles/colors";
+
 export default StyleSheet.create({
 	selectRates: {
 		flex: 1,
-		backgroundColor: "#fff",
+		backgroundColor: colors.background.primary,
 		paddingBottom: 55
 	},
 	selectRatesActionFooter: {

@@ -1,9 +1,11 @@
 import { StyleSheet } from "react-native";
 
+import colors from "../../styles/colors";
+
 export default StyleSheet.create({
 	selectAction: {
 		flex: 1,
-		backgroundColor: "#fff"
+		backgroundColor: colors.background.primary
 	},
 	openActionTouchable: {
 		flex: 1
@@ -12,7 +14,7 @@ export default StyleSheet.create({
 		flex: 1,
 		alignItems: "center",
 		justifyContent: "center",
-		backgroundColor: "#82b00a"
+		backgroundColor: colors.alerting.validation
 	},
 	closeActionTouchable: {
 		flex: 1
@@ -21,19 +23,19 @@ export default StyleSheet.create({
 		flex: 1,
 		alignItems: "center",
 		justifyContent: "center",
-		backgroundColor: "#d0534e"
+		backgroundColor: colors.alerting.attention
 	},
 	iconAction: {
 		fontSize: 50,
-		color: "#fff",
+		color: colors.text.bright,
 		marginBottom: 20
 	},
 	openAction: {
 		fontSize: 20,
-		color: "#fff"
+		color: colors.text.bright
 	},
 	closeAction: {
 		fontSize: 20,
-		color: "#fff"
+		color: colors.text.bright
 	}
 });

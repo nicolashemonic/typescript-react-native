@@ -1,10 +1,12 @@
 import { StyleSheet } from "react-native";
 
+import colors from "../../styles/colors";
+
 export default StyleSheet.create({
 	actionFooter: {
-		backgroundColor: "#fff",
-		borderTopWidth: 1,
-		borderTopColor: "#e2e2e2"
+		backgroundColor: colors.background.primary,
+		borderTopWidth: StyleSheet.hairlineWidth,
+		borderTopColor: colors.border.primary
 	},
 	actionFooterInner: {
 		flex: 1,
@@ -16,7 +18,7 @@ export default StyleSheet.create({
 		justifyContent: "center"
 	},
 	actionFooterText: {
-		color: "#222",
+		color: colors.text.primary,
 		fontSize: 16
 	},
 	actionFooterButtonWrapper: {

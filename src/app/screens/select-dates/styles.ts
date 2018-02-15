@@ -1,9 +1,11 @@
 import { StyleSheet } from "react-native";
 
+import colors from "../../styles/colors";
+
 export default StyleSheet.create({
 	selectDates: {
 		flex: 1,
-		backgroundColor: "#fff"
+		backgroundColor: colors.background.primary
 	},
 	selectDatesActionFooter: {
 		position: "absolute",

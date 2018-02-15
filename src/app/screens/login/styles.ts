@@ -1,15 +1,17 @@
 import { StyleSheet } from "react-native";
 
+import colors from "../../styles/colors";
+
 export default StyleSheet.create({
 	login: {
 		flex: 1,
 		padding: 20,
-		backgroundColor: "#fff"
+		backgroundColor: colors.background.primary
 	},
 	loginFormText: {
 		marginVertical: 20,
 		fontSize: 16,
-		color: "#222"
+		color: colors.text.primary
 	},
 	loginFormPassword: {
 		marginTop: 20

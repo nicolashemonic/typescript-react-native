@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
 
+import colors from "../../styles/colors";
+
 export default StyleSheet.create({
 	listItem: {
 		borderBottomColor: "#e2e2e2",
@@ -11,7 +13,7 @@ export default StyleSheet.create({
 		padding: 20
 	},
 	listItemText: {
-		color: "#222"
+		color: colors.text.primary
 	},
 	listItemAction: {
 		paddingRight: 10
@@ -20,16 +22,16 @@ export default StyleSheet.create({
 		width: 20,
 		height: 20,
 		borderWidth: StyleSheet.hairlineWidth,
-		borderColor: "#222",
+		borderColor: colors.border.primary,
 		borderRadius: 4,
 		alignItems: "center",
 		justifyContent: "center"
 	},
 	listItemCheckboxSelected: {
-		backgroundColor: "#028eca",
-		borderColor: "#028eca"
+		backgroundColor: colors.alerting.information,
+		borderColor: colors.alerting.information
 	},
 	listItemCheckboxIcon: {
-		color: "#fff"
+		color: colors.text.bright
 	}
 });

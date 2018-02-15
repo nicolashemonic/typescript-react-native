@@ -1,9 +1,11 @@
 import { StyleSheet } from "react-native";
 
+import colors from "../../styles/colors";
+
 export default StyleSheet.create({
 	planning: {
 		flex: 1,
-		backgroundColor: "#fff"
+		backgroundColor: colors.background.primary
 	},
 	planningModifyRates: {
 		flex: 1,

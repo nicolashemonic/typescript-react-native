@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
 
+import colors from "../../styles/colors";
+
 export default StyleSheet.create({
 	contentContainer: {
 		flexGrow: 1
@@ -12,18 +14,18 @@ export default StyleSheet.create({
 		flex: 0,
 		paddingHorizontal: 20,
 		paddingVertical: 40,
-		backgroundColor: "#d0534e",
+		backgroundColor: colors.alerting.attention,
 		alignItems: "center",
 		justifyContent: "center"
 	},
 	iconAction: {
 		fontSize: 40,
-		color: "#fff",
+		color: colors.text.bright,
 		marginBottom: 10
 	},
 	titleText: {
 		fontSize: 20,
-		color: "#fff"
+		color: colors.text.bright
 	},
 	sectionsView: {
 		flex: 0,
@@ -35,11 +37,11 @@ export default StyleSheet.create({
 	},
 	sectionTitleText: {
 		fontSize: 18,
-		color: "#222"
+		color: colors.text.primary
 	},
 	sectionValueText: {
 		fontSize: 14,
-		color: "#222",
+		color: colors.text.primary,
 		marginTop: 10
 	},
 	buttonView: {
@@ -47,7 +49,7 @@ export default StyleSheet.create({
 		paddingHorizontal: 20,
 		paddingVertical: 20,
 		alignItems: "center",
-		borderTopWidth: 1,
-		borderTopColor: "#e2e2e2"
+		borderTopWidth: StyleSheet.hairlineWidth,
+		borderTopColor: colors.border.primary
 	}
 });
