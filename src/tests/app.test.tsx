@@ -1,13 +1,11 @@
-import 'react-native';
-import React from 'react';
-import App from '../app/app';
+// import "react-native";
+// import React from "react";
+// import { AppNavigator } from "../app/app-navigator";
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+// // Note: test renderer must be required after react-native.
+// import renderer from "react-test-renderer";
 
-it('renders correctly', () => {
-  const tree = renderer.create(
-    <App />
-  );
-  expect(tree).toBeDefined();
-});
+// it("renders correctly", () => {
+// 	const tree = renderer.create(<AppNavigator />);
+// 	expect(tree).toBeDefined();
+// });
