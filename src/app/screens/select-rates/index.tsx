@@ -1,56 +1,36 @@
 import React, { Component } from "react";
-
+import { Dispatch } from "redux";
 import { FlatList, View } from "react-native";
-
+import { connect } from "react-redux";
+import { toggleRate } from "../../actions/modify-rates";
 import ListItem from "../../components/list-item";
-
 import ActionFooter from "../../components/action-footer";
-
 import styles from "./styles";
+import { IRate } from "../../models/modify-rates";
+import { NavigationScreenProp } from "react-navigation";
 
-export default class SelectRatesScreen extends Component<any, any> {
+interface IProps {
+	rates: IRate[];
+	dispatch: Dispatch<any>;
+	navigation: NavigationScreenProp<any, any>;
+}
+
+class SelectRatesScreen extends Component<IProps, undefined> {
 	static navigationOptions = {
 		title: "Pick rates to edit"
 	};
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			rates: [
-				{ key: "Public rate (RACKPRI)", selected: false },
-				{ key: "Best available rate (BAR)", selected: false },
-				{ key: "Romantic Stay (3NIGHTS)", selected: false },
-				{ key: "Weekend rate (WEEKEND)", selected: false },
-				{ key: "Booking (BOOKING) ", selected: false },
-				{ key: "Best early rate (EARLY) ", selected: false },
-				{ key: "Last minute rate (LASTMIN)", selected: false },
-				{ key: "Promotional rate (PROMO3) ", selected: false },
-				{ key: "Last minute rate (LASTMI3) ", selected: false },
-				{ key: "2 nights (2NUIT) ", selected: false },
-				{ key: "Promotional rate (PROMO6)", selected: false },
-				{ key: "Release rate (RELEASE) ", selected: false },
-				{ key: "Last minute rate (LASTMI2)", selected: false },
-				{ key: "Special offer (SOR)", selected: false },
-				{ key: "Promotional rate (PROMO8)", selected: false }
-			]
-		};
 	}
 
-	toggleRate = item => {
-		this.setState({
-			rates: this.state.rates.map(rate => {
-				return rate.key == item.key
-					? {
-							...rate,
-							selected: !rate.selected
-						}
-					: rate;
-			})
-		});
-	};
+	dispatch = action => this.props.dispatch(action);
+
+	toggleRate = item => this.dispatch(toggleRate(item.key));
 
 	selectedRatesLabel = () => {
-		const selectedRates = this.state.rates.filter(rate => rate.selected);
+		const { rates } = this.props;
+		const selectedRates = rates.filter(rate => rate.selected);
 		if (!selectedRates.length) {
 			return "No rate selected";
 		}
@@ -61,15 +41,16 @@ export default class SelectRatesScreen extends Component<any, any> {
 	};
 
 	render() {
-		const { navigate } = this.props.navigation;
-		const selectedRates = this.state.rates.filter(rate => rate.selected);
+		const { navigation, rates } = this.props;
+		const { navigate } = navigation;
+		const selectedRates = rates.filter(rate => rate.selected);
 
 		return (
 			<View style={styles.selectRates}>
 				<FlatList
-					data={this.state.rates}
+					data={rates}
 					renderItem={({ item }) => (
-						<ListItem item={item} onPress={this.toggleRate} />
+						<ListItem item={item} onPress={item => this.toggleRate(item)} />
 					)}
 				/>
 				<ActionFooter
@@ -82,3 +63,13 @@ export default class SelectRatesScreen extends Component<any, any> {
 		);
 	}
 }
+
+const mapStateToProps = state => ({
+	rates: state.modifyRates.rates
+});
+
+const mapDispatchToProps = dispatch => ({
+	dispatch
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectRatesScreen);

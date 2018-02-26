@@ -32,7 +32,7 @@ export default props => (
 						)}
 					</View>
 				</View>
-				<Text style={styles.listItemText}>{props.item.key}</Text>
+				<Text style={styles.listItemText}>{props.item.name}</Text>
 			</View>
 		</Touchable>
 	</View>
