@@ -1,11 +1,15 @@
-// import { AppNavigator } from "../app-navigator";
+import AppNavigator from "../app-navigator";
 
-// const router = AppNavigator.router;
-// const mainNavAction = router.getActionForPathAndParams("Splash");
-// const initialNavState = router.getStateForAction(mainNavAction, undefined);
+const initialState = AppNavigator.router.getStateForAction(
+	AppNavigator.router.getActionForPathAndParams("Splash"),
+	undefined
+);
 
-// const NavReducer = (state = initialNavState, action) => {
-// 	return router.getStateForAction(action, state);
-// };
+const navigation = (state = initialState, action) => {
+	const nextState = AppNavigator.router.getStateForAction(action, state);
 
-// export default NavReducer;
+	// Simply return the original `state` if `nextState` is null or undefined.
+	return nextState || state;
+};
+
+export default navigation;

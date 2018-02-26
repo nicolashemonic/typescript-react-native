@@ -1,6 +1,9 @@
 const initialModifyRatesState = {};
 
-export function modifyRates(state = initialModifyRatesState, action: any) {
+export default function modifyRates(
+	state = initialModifyRatesState,
+	action: any
+) {
 	switch (action.type) {
 		case "SELECT_RATES":
 			return {
