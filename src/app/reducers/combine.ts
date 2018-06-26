@@ -1,10 +1,8 @@
 import { combineReducers, ReducersMapObject } from "redux";
-import modifyRates from "./modify-rates";
-import navigation from "./navigation";
+import authReducer from "./auth";
 
 const reducer = combineReducers({
-	modifyRates,
-	navigation: navigation
+	authReducer
 } as ReducersMapObject);
 
 export default reducer;

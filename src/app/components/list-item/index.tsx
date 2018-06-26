@@ -8,7 +8,7 @@ import {
 	View
 } from "react-native";
 
-import FontAwesome, { Icons } from "react-native-fontawesome";
+// import FontAwesome, { Icons } from "react-native-fontawesome";
 
 import styles from "./styles";
 
@@ -25,11 +25,11 @@ export default props => (
 							styles.listItemCheckbox,
 							props.item.selected ? styles.listItemCheckboxSelected : null
 						]}>
-						{props.item.selected && (
+						{/* {props.item.selected && (
 							<FontAwesome style={styles.listItemCheckboxIcon}>
 								{Icons.check}
 							</FontAwesome>
-						)}
+						)} */}
 					</View>
 				</View>
 				<Text style={styles.listItemText}>{props.item.name}</Text>

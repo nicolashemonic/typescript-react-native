@@ -1,36 +1,16 @@
 {
-    "compilerOptions": {
-        "target": "es2015",
-        "module": "es2015",
-        "moduleResolution": "node",
-        "jsx": "react",
-        "outDir": "artifacts",
-        "rootDir": "src",
-        "allowSyntheticDefaultImports": true,
-        "noImplicitAny": false,
-        "preserveConstEnums": true,
-        "allowJs": false,
-        "sourceMap": true,
-        "noImplicitReturns": true,
-        "noUnusedParameters": true,
-        "noUnusedLocals": true,
-        "baseUrl": "./"
-    },
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.tsx",
-        "static/**/*.*"
-    ],
-    "types": [
-        "react",
-        "react-native",
-        "jest"
-    ],
-    "exclude": [
-        "android",
-        "ios",
-        "build",
-        "node_modules"
-    ],
-    "compileOnSave": false
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "module": "es6",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noImplicitAny": false,
+    "target": "es6",
+    "lib": [
+      "es6"
+    ]
+  },
+  "exclude": ["node_modules"]
 }

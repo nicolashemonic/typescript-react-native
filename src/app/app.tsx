@@ -1,13 +1,9 @@
 import React from "react";
-import { connect } from "react-redux";
 import { BackHandler } from "react-native";
 import AppNavigator from "./app-navigator";
-import { addNavigationHelpers, NavigationActions } from "react-navigation";
-import { createReduxBoundAddListener } from "react-navigation-redux-helpers";
+import { NavigationActions } from "react-navigation";
 
-const addListener = createReduxBoundAddListener("root");
-
-class App extends React.Component<any, any> {
+export default class App extends React.Component<any, any> {
 	componentDidMount() {
 		BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
 	}
@@ -24,20 +20,6 @@ class App extends React.Component<any, any> {
 	};
 
 	render() {
-		return (
-			<AppNavigator
-				navigation={addNavigationHelpers({
-					dispatch: this.props.dispatch,
-					state: this.props.navigation,
-					addListener
-				} as any)}
-			/>
-		);
+		return <AppNavigator />;
 	}
 }
-
-const mapStateToProps = state => ({
-	navigation: state.navigation
-});
-
-export default () => connect(mapStateToProps)(App);

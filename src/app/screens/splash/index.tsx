@@ -1,41 +1,25 @@
 import React, { Component } from "react";
 
-import {
-	View,
-	Text,
-	Image,
-	Platform,
-	TouchableNativeFeedback,
-	TouchableOpacity
-} from "react-native";
+import { View, ActivityIndicator, AsyncStorage } from "react-native";
 
 import style from "./styles";
 
-import availproLogo from "static/availpro.png";
-
 export default class SplahScreen extends Component<any, any> {
-	static navigationOptions = {
-		title: "Availpro",
-		headerStyle: {
-			display: "none"
-		}
+
+	constructor(props) {
+		super(props);
+		this.bootstrap();
+	}
+
+	bootstrap = async () => {
+		const userToken = await AsyncStorage.getItem("userToken");
+		this.props.navigation.navigate(userToken ? "App" : "Auth");
 	};
 
 	render() {
-		const { navigate } = this.props.navigation;
-		const Touchable =
-			Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
 		return (
 			<View style={style.splash}>
-				<Image style={style.splashLogo} source={availproLogo} />
-				<View style={style.splashLogin}>
-					<Touchable
-						style={style.splashLoginLink}
-						accessibilityComponentType="button"
-						onPress={() => navigate("Login")}>
-						<Text style={style.splashLoginText}>Log In</Text>
-					</Touchable>
-				</View>
+				<ActivityIndicator color="#fff" size="large" />
 			</View>
 		);
 	}

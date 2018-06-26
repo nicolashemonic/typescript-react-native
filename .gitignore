@@ -52,11 +52,5 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 
-# VS Code
-#
-.vscode/
-
-
-# Artifacts
-#
-artifacts/
+# Bundle artifact
+*.jsbundle

@@ -1,23 +1,19 @@
-import { StackNavigator } from "react-navigation";
+import { createStackNavigator, createSwitchNavigator } from "react-navigation";
 import SplashScreen from "./screens/splash";
-import LoginScreen from "./screens/login";
-import PlanningScreen from "./screens/planning";
-import SelectActionScreen from "./screens/select-action";
-import SelectRatesScreen from "./screens/select-rates";
-import SelectDatesScreen from "./screens/select-dates";
-import SelectConfirmScreen from "./screens/select-confirm";
+import LogInScreen from "./screens/login";
+import HomeScreen from "./screens/home";
+import DetailsScreen from "./screens/details";
 
-const AppNavigator = StackNavigator(
-	{
-		Splash: { screen: SplashScreen },
-		Login: { screen: LoginScreen },
-		Planning: { screen: PlanningScreen },
-		SelectAction: { screen: SelectActionScreen },
-		SelectRates: { screen: SelectRatesScreen },
-		SelectDates: { screen: SelectDatesScreen },
-		SelectConfirm: { screen: SelectConfirmScreen }
-	},
-	{ initialRouteName: "Splash" }
+const AppStack = createStackNavigator({ Home: HomeScreen, Details: DetailsScreen });
+const AuthStack = createStackNavigator({ LogIn: LogInScreen });
+
+export default createSwitchNavigator(
+  {
+    Splash: SplashScreen,
+    App: AppStack,
+    Auth: AuthStack,
+  },
+  {
+    initialRouteName: 'Splash',
+  }
 );
-
-export default AppNavigator;

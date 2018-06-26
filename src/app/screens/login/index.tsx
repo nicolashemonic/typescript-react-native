@@ -1,17 +1,23 @@
 import React, { Component } from "react";
 
-import { Button, View, Text } from "react-native";
+import { Button, View, Text, AsyncStorage } from "react-native";
 
 import style from "./styles";
 
 import TextInput from "../../components/text-input";
 
 export default class LoginScreen extends Component<any, any> {
-	navigationWillFocus: any;
 	inputRef = [];
 
 	static navigationOptions = {
-		title: "Log In"
+		title: "Log In",
+		headerStyle: {
+			backgroundColor: '#028eca',
+		},
+		headerTintColor: '#fff',
+		headerTitleStyle: {
+			fontWeight: 'bold',
+		}
 	};
 
 	constructor(props) {
@@ -20,24 +26,6 @@ export default class LoginScreen extends Component<any, any> {
 			email: "",
 			password: ""
 		};
-	}
-
-	componentDidMount() {
-		this.navigationWillFocus = this.props.navigation.addListener(
-			"willFocus",
-			() => {
-				if (this.state.email || this.state.password) {
-					this.setState({
-						email: "",
-						password: ""
-					});
-				}
-			}
-		);
-	}
-
-	componentWillUnmount() {
-		this.navigationWillFocus.remove();
 	}
 
 	onChangeEmail = value => {
@@ -56,17 +44,16 @@ export default class LoginScreen extends Component<any, any> {
 		this.inputRef[id] = ref;
 	};
 
-	submit = () => {
-		this.inputRef["password"].blur();
-		this.props.navigation.navigate("Planning");
+	logIn = async () => {
+		await AsyncStorage.setItem('userToken', 'abc');
+		this.props.navigation.navigate('App');
 	};
 
 	render() {
-		const { navigate } = this.props.navigation;
 		return (
 			<View style={style.login}>
 				<Text style={style.loginFormText}>
-					Log in with your Availpro account.
+					Log in with your personal account.
 				</Text>
 				<TextInput
 					label="email"
@@ -85,13 +72,13 @@ export default class LoginScreen extends Component<any, any> {
 					style={style.loginFormPassword}
 					autoCorrect={false}
 					inputRef={ref => this.addInputRef("password", ref)}
-					onSubmitEditing={this.submit}
+					onSubmitEditing={this.logIn}
 				/>
 				<View style={style.loginFormButton}>
 					<Button
 						color="#028eca"
 						title="Log In"
-						onPress={() => navigate("Planning")}
+						onPress={this.logIn}
 					/>
 				</View>
 			</View>

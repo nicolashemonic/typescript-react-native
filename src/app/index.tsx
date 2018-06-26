@@ -1,16 +1,11 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { AppRegistry } from "react-native";
 import createStore from "./store";
-import createApp from "./app";
-import configurePushNotification from "./push-notification";
+import App from "./app";
 
 const store = createStore();
-const App = createApp();
 
-configurePushNotification();
-
-class Root extends React.Component {
+export default class Root extends React.Component {
 	render() {
 		return (
 			<Provider store={store}>
@@ -19,5 +14,3 @@ class Root extends React.Component {
 		);
 	}
 }
-
-AppRegistry.registerComponent("ReactNativeCli", () => Root);
