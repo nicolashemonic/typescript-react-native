@@ -1,0 +1,17 @@
+{
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"window.zoomLevel": 0,
+	"explorer.openEditors.visible": 0,
+	"prettier.useTabs": true,
+	"editor.formatOnSave": true,
+	"editor.minimap.enabled": false,
+	"prettier.jsxBracketSameLine": true,
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/node_modules": true
+	}
+}

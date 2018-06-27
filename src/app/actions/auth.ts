@@ -6,6 +6,6 @@ type LogIn = {
 
 export function logIn(): LogIn {
 	return {
-		type: "LOG_IN",
+		type: "LOG_IN"
 	};
 }

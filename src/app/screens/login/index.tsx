@@ -12,11 +12,11 @@ export default class LoginScreen extends Component<any, any> {
 	static navigationOptions = {
 		title: "Log In",
 		headerStyle: {
-			backgroundColor: '#028eca',
+			backgroundColor: "#028eca"
 		},
-		headerTintColor: '#fff',
+		headerTintColor: "#fff",
 		headerTitleStyle: {
-			fontWeight: 'bold',
+			fontWeight: "bold"
 		}
 	};
 
@@ -45,8 +45,8 @@ export default class LoginScreen extends Component<any, any> {
 	};
 
 	logIn = async () => {
-		await AsyncStorage.setItem('userToken', 'abc');
-		this.props.navigation.navigate('App');
+		await AsyncStorage.setItem("userToken", "abc");
+		this.props.navigation.navigate("App");
 	};
 
 	render() {
@@ -75,11 +75,7 @@ export default class LoginScreen extends Component<any, any> {
 					onSubmitEditing={this.logIn}
 				/>
 				<View style={style.loginFormButton}>
-					<Button
-						color="#028eca"
-						title="Log In"
-						onPress={this.logIn}
-					/>
+					<Button color="#028eca" title="Log In" onPress={this.logIn} />
 				</View>
 			</View>
 		);
