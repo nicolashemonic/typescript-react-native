@@ -2,6 +2,7 @@ import React from "react";
 import { BackHandler } from "react-native";
 import AppNavigator from "./app-navigator";
 import { NavigationActions } from "react-navigation";
+import NavigationService from "./services/navigation";
 
 export default class App extends React.Component<any, any> {
 	componentDidMount() {
@@ -20,6 +21,12 @@ export default class App extends React.Component<any, any> {
 	};
 
 	render() {
-		return <AppNavigator />;
+		return (
+			<AppNavigator
+				ref={navigatorRef => {
+					NavigationService.setTopLevelNavigator(navigatorRef);
+				}}
+			/>
+		);
 	}
 }

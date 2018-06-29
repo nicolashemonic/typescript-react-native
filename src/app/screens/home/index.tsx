@@ -1,10 +1,19 @@
 import React, { Component } from "react";
-
-import { Button, View, AsyncStorage } from "react-native";
-
+import { connect } from "react-redux";
+import { logOut } from "../../actions/auth";
+import { Button, View } from "react-native";
+import { IState as IAppState } from "../../models";
+import { Dispatch } from "../../types";
+import {
+	IState,
+	IProps,
+	IDispatchProps,
+	IStateProps,
+	IOwnProps
+} from "./model";
 import style from "./styles";
 
-export default class HomeScreen extends Component<any, any> {
+class HomeScreen extends Component<IProps, IState> {
 	static navigationOptions = {
 		title: "Home",
 		headerStyle: {
@@ -20,19 +29,21 @@ export default class HomeScreen extends Component<any, any> {
 		this.props.navigation.navigate("Details");
 	};
 
-	logOut = async () => {
-		await AsyncStorage.clear();
-		this.props.navigation.navigate("Auth");
-	};
-
 	render() {
 		return (
 			<View style={style.home}>
 				<View style={style.homeButtons}>
 					<Button title="Show me more of the app" onPress={this.showMoreApp} />
-					<Button title="Actually, log me out :)" onPress={this.logOut} />
+					<Button title="Actually, log me out :)" onPress={this.props.logOut} />
 				</View>
 			</View>
 		);
 	}
 }
+
+export default connect<IStateProps, IDispatchProps, IOwnProps, IAppState>(
+	(state, ownProps) => ({}),
+	(dispatch: Dispatch, ownProps) => ({
+		logOut: () => dispatch(logOut())
+	})
+)(HomeScreen);

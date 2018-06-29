@@ -1,12 +1,21 @@
 import React, { Component } from "react";
-
-import { Button, View, Text, AsyncStorage } from "react-native";
-
+import { Button, View, Text } from "react-native";
+import { connect } from "react-redux";
+import { logIn } from "../../actions/auth";
 import style from "./styles";
-
 import TextInput from "../../components/text-input";
+import { IState as IAppState } from "../../models";
+import { Dispatch } from "../../types";
+import {
+	IProps,
+	IState,
+	IStateProps,
+	IDispatchProps,
+	IOwnProps
+} from "./model";
+import { ThunkDispatch } from "redux-thunk";
 
-export default class LoginScreen extends Component<any, any> {
+class LoginScreen extends Component<IProps, IState> {
 	inputRef = [];
 
 	static navigationOptions = {
@@ -44,10 +53,7 @@ export default class LoginScreen extends Component<any, any> {
 		this.inputRef[id] = ref;
 	};
 
-	logIn = async () => {
-		await AsyncStorage.setItem("userToken", "abc");
-		this.props.navigation.navigate("App");
-	};
+	logIn = () => this.props.logIn("email", "password");
 
 	render() {
 		return (
@@ -81,3 +87,12 @@ export default class LoginScreen extends Component<any, any> {
 		);
 	}
 }
+
+export default connect<IStateProps, IDispatchProps, IOwnProps, IAppState>(
+	(state, ownProps) => ({}),
+	(dispatch: Dispatch, ownProps) => {
+		return {
+			logIn: (email, password) => dispatch(logIn(email, password))
+		};
+	}
+)(LoginScreen);

@@ -1,16 +1,15 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "react",
-    "module": "es6",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "noImplicitAny": false,
-    "target": "es6",
-    "lib": [
-      "es6"
-    ]
-  },
-  "exclude": ["node_modules"]
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"jsx": "react",
+		"module": "es6",
+		"moduleResolution": "node",
+		"noEmit": true,
+		"noImplicitAny": false,
+		"target": "es6",
+		"lib": ["es6"],
+		"outDir": "outDir"
+	},
+	"exclude": ["node_modules"]
 }

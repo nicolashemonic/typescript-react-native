@@ -1,8 +1,10 @@
-import { combineReducers, ReducersMapObject } from "redux";
-import authReducer from "./auth";
+import { combineReducers } from "redux";
+import { IState } from "../models";
+import { AppAction } from "../actions";
+import auth from "./auth";
 
-const reducer = combineReducers({
-	authReducer
-} as ReducersMapObject);
+const reducer = combineReducers<IState, AppAction>({
+	auth
+});
 
 export default reducer;
