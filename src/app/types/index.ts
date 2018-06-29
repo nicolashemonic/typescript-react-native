@@ -1,6 +1,6 @@
-import { ActionCreator, Action } from "redux";
+import { ActionCreator } from "redux";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
-import { IState as IAppState } from "../models";
+import { IAppState } from "../models";
 import { AppAction } from "../actions";
 
 export type AsyncActionCreator = ActionCreator<

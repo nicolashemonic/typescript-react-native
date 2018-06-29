@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { logIn } from "../../actions/auth";
 import style from "./styles";
 import TextInput from "../../components/text-input";
-import { IState as IAppState } from "../../models";
+import { IAppState } from "../../models";
 import { Dispatch } from "../../types";
 import {
 	IProps,
@@ -13,20 +13,12 @@ import {
 	IDispatchProps,
 	IOwnProps
 } from "./model";
-import { ThunkDispatch } from "redux-thunk";
 
 class LoginScreen extends Component<IProps, IState> {
 	inputRef = [];
 
 	static navigationOptions = {
-		title: "Log In",
-		headerStyle: {
-			backgroundColor: "#028eca"
-		},
-		headerTintColor: "#fff",
-		headerTitleStyle: {
-			fontWeight: "bold"
-		}
+		title: "Log In"
 	};
 
 	constructor(props) {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, ActivityIndicator, AsyncStorage } from "react-native";
 import { connect } from "react-redux";
 import { logInFromStorage } from "../../actions/auth";
-import { IState as IAppState } from "../../models";
+import { IAppState } from "../../models";
 import { Dispatch } from "../../types";
 import {
 	IProps,

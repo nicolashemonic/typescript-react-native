@@ -63382,9 +63382,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
 	var _reduxLogger = _require(_dependencyMap[2], "redux-logger");
 
-	var _combine = _require(_dependencyMap[3], "./reducers/combine");
+	var _reducers = _require(_dependencyMap[3], "./reducers");
 
-	var _combine2 = _interopRequireDefault(_combine);
+	var _reducers2 = _interopRequireDefault(_reducers);
 
 	var _exceptionLogger = _require(_dependencyMap[4], "./middlewares/exception-logger");
 
@@ -63398,9 +63398,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 	var composeEnhancers = window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] || _redux.compose;
 
 	exports.default = function () {
-		return (0, _redux.createStore)(_combine2.default, composeEnhancers((0, _redux.applyMiddleware)(_exceptionLogger.exceptionLoggerMiddleware, _authStorage.authStorageMiddleware, _reduxThunk2.default, loggerMiddleware)));
+		return (0, _redux.createStore)(_reducers2.default, composeEnhancers((0, _redux.applyMiddleware)(_exceptionLogger.exceptionLoggerMiddleware, _authStorage.authStorageMiddleware, _reduxThunk2.default, loggerMiddleware)));
 	};
-},516,[505,517,518,519,521,522],"src/app/store.ts");
+},516,[505,517,518,651,521,522],"src/app/store.ts");
 __d(function (global, _require, module, exports, _dependencyMap) {
   'use strict';
 
@@ -64047,24 +64047,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 		value: true
 	});
 
-	var _redux = _require(_dependencyMap[0], "redux");
-
-	var _auth = _require(_dependencyMap[1], "./auth");
-
-	var _auth2 = _interopRequireDefault(_auth);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var reducer = (0, _redux.combineReducers)({
-		auth: _auth2.default
-	});
-	exports.default = reducer;
-},519,[505,520],"src/app/reducers/combine.ts");
-__d(function (global, _require, module, exports, _dependencyMap) {
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	exports.default = authReducer;
@@ -64189,15 +64171,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _reactNative = _require(_dependencyMap[2], "react-native");
-
-	var _appNavigator = _require(_dependencyMap[3], "./app-navigator");
+	var _appNavigator = _require(_dependencyMap[2], "./app-navigator");
 
 	var _appNavigator2 = _interopRequireDefault(_appNavigator);
 
-	var _reactNavigation = _require(_dependencyMap[4], "react-navigation");
-
-	var _navigation = _require(_dependencyMap[5], "./services/navigation");
+	var _navigation = _require(_dependencyMap[3], "./services/navigation");
 
 	var _navigation2 = _interopRequireDefault(_navigation);
 
@@ -64234,40 +64212,15 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 		function App() {
 			_classCallCheck(this, App);
 
-			var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-
-			_this.onBackPress = function () {
-				var _this$props = _this.props,
-				    dispatch = _this$props.dispatch,
-				    navigation = _this$props.navigation;
-
-				if (navigation.index === 0) {
-					return false;
-				}
-
-				dispatch(_reactNavigation.NavigationActions.back());
-				return true;
-			};
-
-			return _this;
+			return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
 		}
 
 		_createClass(App, [{
-			key: "componentDidMount",
-			value: function componentDidMount() {
-				_reactNative.BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
-			}
-		}, {
-			key: "componentWillUnmount",
-			value: function componentWillUnmount() {
-				_reactNative.BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
-			}
-		}, {
 			key: "render",
 			value: function render() {
 				return _react3.default.createElement(_appNavigator2.default, {
 					ref: function ref(navigatorRef) {
-						_navigation2.default.setTopLevelNavigator(navigatorRef);
+						return _navigation2.default.setTopLevelNavigator(navigatorRef);
 					}
 				});
 			}
@@ -64277,7 +64230,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 	}(_react3.default.Component));
 
 	exports.default = App;
-},523,[118,130,12,524,525,639],"src/app/app.tsx");
+},523,[118,130,524,639],"src/app/app.tsx");
 __d(function (global, _require, module, exports, _dependencyMap) {
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -64303,17 +64256,27 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var navigationOptions = {
+		headerStyle: {
+			backgroundColor: "#028eca"
+		},
+		headerTintColor: "#fff"
+	};
 	var AppStack = (0, _reactNavigation.createStackNavigator)({
 		Home: _home2.default,
 		Details: _details2.default
+	}, {
+		navigationOptions: navigationOptions
 	});
 	var AuthStack = (0, _reactNavigation.createStackNavigator)({
 		LogIn: _login2.default
+	}, {
+		navigationOptions: navigationOptions
 	});
 	exports.default = (0, _reactNavigation.createSwitchNavigator)({
 		Splash: _splash2.default,
-		App: AppStack,
-		Auth: AuthStack
+		Auth: AuthStack,
+		App: AppStack
 	}, {
 		initialRouteName: "Splash"
 	});
@@ -82728,14 +82691,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 	}(_react2.Component));
 
 	LoginScreen.navigationOptions = {
-		title: "Log In",
-		headerStyle: {
-			backgroundColor: "#028eca"
-		},
-		headerTintColor: "#fff",
-		headerTitleStyle: {
-			fontWeight: "bold"
-		}
+		title: "Log In"
 	};
 	exports.default = (0, _reactRedux.connect)(function (state, ownProps) {
 		return {};
@@ -83036,14 +82992,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 	}(_react2.Component));
 
 	HomeScreen.navigationOptions = {
-		title: "Home",
-		headerStyle: {
-			backgroundColor: "#028eca"
-		},
-		headerTintColor: "#fff",
-		headerTitleStyle: {
-			fontWeight: "bold"
-		}
+		title: "Home"
 	};
 	exports.default = (0, _reactRedux.connect)(function (state, ownProps) {
 		return {};
@@ -83152,14 +83101,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
 	exports.default = DetailsScreen;
 	DetailsScreen.navigationOptions = {
-		title: "Details",
-		headerStyle: {
-			backgroundColor: "#028eca"
-		},
-		headerTintColor: "#fff",
-		headerTitleStyle: {
-			fontWeight: "bold"
-		}
+		title: "Details"
 	};
 },648,[118,130,12,649],"src/app/screens/details/index.tsx");
 __d(function (global, _require, module, exports, _dependencyMap) {
@@ -83184,6 +83126,24 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 		}
 	});
 },649,[12,641],"src/app/screens/details/styles.ts");
+__d(function (global, _require, module, exports, _dependencyMap) {
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _redux = _require(_dependencyMap[0], "redux");
+
+	var _auth = _require(_dependencyMap[1], "./auth");
+
+	var _auth2 = _interopRequireDefault(_auth);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var reducer = (0, _redux.combineReducers)({
+		auth: _auth2.default
+	});
+	exports.default = reducer;
+},651,[505,520],"src/app/reducers/index.ts");
 require(52);
 require(11);
 //# sourceMappingURL=index.map

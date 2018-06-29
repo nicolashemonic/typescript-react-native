@@ -1,6 +1,6 @@
 import { IAuthState } from "./auth";
 
-export interface IState {
+export interface IAppState {
 	auth: IAuthState;
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logOut } from "../../actions/auth";
 import { Button, View } from "react-native";
-import { IState as IAppState } from "../../models";
+import { IAppState } from "../../models";
 import { Dispatch } from "../../types";
 import {
 	IState,
@@ -15,14 +15,7 @@ import style from "./styles";
 
 class HomeScreen extends Component<IProps, IState> {
 	static navigationOptions = {
-		title: "Home",
-		headerStyle: {
-			backgroundColor: "#028eca"
-		},
-		headerTintColor: "#fff",
-		headerTitleStyle: {
-			fontWeight: "bold"
-		}
+		title: "Home"
 	};
 
 	showMoreApp = () => {

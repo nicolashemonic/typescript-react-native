@@ -6,14 +6,7 @@ import style from "./styles";
 
 export default class DetailsScreen extends Component<any, any> {
 	static navigationOptions = {
-		title: "Details",
-		headerStyle: {
-			backgroundColor: "#028eca"
-		},
-		headerTintColor: "#fff",
-		headerTitleStyle: {
-			fontWeight: "bold"
-		}
+		title: "Details"
 	};
 
 	render() {
