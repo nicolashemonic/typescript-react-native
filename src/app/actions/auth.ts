@@ -1,7 +1,16 @@
 import NavigationService from "../services/navigation";
-import { AsyncActionCreator } from "../types";
+import { AsyncActionCreator, SyncActionCreator } from "../types";
 
-const api = () => new Promise(resolve => setTimeout(resolve, 200));
+const api = dispatch =>
+	new Promise((resolve, reject) =>
+		setTimeout(() => {
+			const httpResponse200 = () => resolve();
+			const httpResponse401 = () =>
+				dispatch(sessionExpired()) && reject("Session Expired");
+			return httpResponse200();
+			//return httpResponse401();
+		}, 200)
+	);
 
 export type AuthAction =
 	| ReturnType<LogInRequest>
@@ -10,7 +19,8 @@ export type AuthAction =
 	| ReturnType<LogInFromStorage>
 	| ReturnType<LogOutRequest>
 	| ReturnType<LogOutSuccess>
-	| ReturnType<LogOutFailure>;
+	| ReturnType<LogOutFailure>
+	| ReturnType<SessionExpired>;
 
 // Log In
 
@@ -50,7 +60,7 @@ export const logIn: AsyncActionCreator = (email: string, password: string) => {
 	return async (dispatch, getState) => {
 		dispatch(logInRequest());
 		try {
-			await api();
+			await api(dispatch);
 			dispatch(logInSuccess("abc"));
 			NavigationService.navigate("App");
 		} catch (e) {
@@ -107,11 +117,28 @@ export const logOut: AsyncActionCreator = () => {
 	return async (dispatch, getState) => {
 		dispatch(logOutRequest());
 		try {
-			await api();
+			await api(dispatch);
 			dispatch(logOutSuccess());
 			NavigationService.navigate("Auth");
 		} catch (e) {
-			dispatch(logInFailure(e.message || e));
+			dispatch(logOutFailure(e.message || e));
 		}
+	};
+};
+
+// Session Expired
+
+export type SessionExpired = () => {
+	type: "SESSION_EXPIRED";
+};
+
+export const _sessionExpired: SessionExpired = () => ({
+	type: "SESSION_EXPIRED"
+});
+
+export const sessionExpired: SyncActionCreator = () => {
+	return (dispatch, getState) => {
+		dispatch(_sessionExpired());
+		NavigationService.navigate("Auth");
 	};
 };

@@ -11,6 +11,10 @@ export const authStorageMiddleware = () => next => (action: AuthAction) => {
 			AuthStorage.removeToken();
 			break;
 		}
+		case "SESSION_EXPIRED": {
+			AuthStorage.removeToken();
+			break;
+		}
 	}
 	return next(action);
 };

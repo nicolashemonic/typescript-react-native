@@ -64171,6 +64171,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
 							break;
 						}
+
+					case "SESSION_EXPIRED":
+						{
+							_authStorage2.default.removeToken();
+
+							break;
+						}
 				}
 
 				return next(action);
@@ -82459,7 +82466,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.logOut = exports.logOutFailure = exports.logOutSuccess = exports.logOutRequest = exports.logInFromStorage = exports.logIn = exports.logInFailure = exports.logInSuccess = exports.logInRequest = undefined;
+	exports.sessionExpired = exports._sessionExpired = exports.logOut = exports.logOutFailure = exports.logOutSuccess = exports.logOutRequest = exports.logInFromStorage = exports.logIn = exports.logInFailure = exports.logInSuccess = exports.logInRequest = undefined;
 
 	var _this = this;
 
@@ -82497,9 +82504,19 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 		});
 	};
 
-	var api = function api() {
-		return new Promise(function (resolve) {
-			return setTimeout(resolve, 200);
+	var api = function api(dispatch) {
+		return new Promise(function (resolve, reject) {
+			return setTimeout(function () {
+				var httpResponse200 = function httpResponse200() {
+					return resolve();
+				};
+
+				var httpResponse401 = function httpResponse401() {
+					return dispatch(sessionExpired()) && reject("Session Expired");
+				};
+
+				return httpResponse200();
+			}, 200);
 		});
 	};
 
@@ -82533,7 +82550,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 								dispatch(logInRequest());
 								_context.prev = 1;
 								_context.next = 4;
-								return api();
+								return api(dispatch);
 
 							case 4:
 								dispatch(logInSuccess("abc"));
@@ -82594,7 +82611,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 								dispatch(logOutRequest());
 								_context2.prev = 1;
 								_context2.next = 4;
-								return api();
+								return api(dispatch);
 
 							case 4:
 								dispatch(logOutSuccess());
@@ -82607,7 +82624,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 							case 8:
 								_context2.prev = 8;
 								_context2.t0 = _context2["catch"](1);
-								dispatch(logInFailure(_context2.t0.message || _context2.t0));
+								dispatch(logOutFailure(_context2.t0.message || _context2.t0));
 
 							case 11:
 							case "end":
@@ -82616,6 +82633,20 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 					}
 				}, _callee2, this, [[1, 8]]);
 			}));
+		};
+	};
+
+	var _sessionExpired = exports._sessionExpired = function _sessionExpired() {
+		return {
+			type: "SESSION_EXPIRED"
+		};
+	};
+
+	var sessionExpired = exports.sessionExpired = function sessionExpired() {
+		return function (dispatch, getState) {
+			dispatch(_sessionExpired());
+
+			_navigation2.default.navigate("Auth");
 		};
 	};
 },639,[640],"src/app/actions/auth.ts");
