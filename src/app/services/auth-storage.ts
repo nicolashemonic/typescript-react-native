@@ -1,17 +1,17 @@
 import { AsyncStorage } from "react-native";
 
 export default class AuthStorage {
-	static readonly userToken = "user-token";
+	static readonly sessionToken = "session-token";
 
 	static async getToken() {
-		return await AsyncStorage.getItem(AuthStorage.userToken);
+		return await AsyncStorage.getItem(AuthStorage.sessionToken);
 	}
 
 	static async setToken(token: string) {
-		return await AsyncStorage.setItem(AuthStorage.userToken, token);
+		return await AsyncStorage.setItem(AuthStorage.sessionToken, token);
 	}
 
 	static async removeToken() {
-		return await AsyncStorage.removeItem(AuthStorage.userToken);
+		return await AsyncStorage.removeItem(AuthStorage.sessionToken);
 	}
 }

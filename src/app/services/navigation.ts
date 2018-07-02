@@ -1,8 +1,8 @@
-import { NavigationActions } from "react-navigation";
+import { NavigationActions, NavigationScreenProp } from "react-navigation";
 
-let navigator;
+let navigator: NavigationScreenProp<any, any>;
 
-function setTopLevelNavigator(navigatorRef) {
+function setTopLevelNavigator(navigatorRef: NavigationScreenProp<any, any>) {
 	navigator = navigatorRef;
 }
 

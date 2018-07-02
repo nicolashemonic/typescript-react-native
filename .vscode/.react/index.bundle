@@ -63395,7 +63395,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 	var loggerMiddleware = (0, _reduxLogger.createLogger)({
 		level: "info"
 	});
-	var composeEnhancers = window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] || _redux.compose;
+	var composeEnhancers = typeof window != "undefined" && window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] ? window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] : _redux.compose;
 
 	exports.default = function () {
 		return (0, _redux.createStore)(_reducers2.default, composeEnhancers((0, _redux.applyMiddleware)(_exceptionLogger.exceptionLoggerMiddleware, _authStorage.authStorageMiddleware, _reduxThunk2.default, loggerMiddleware)));
@@ -64091,15 +64091,15 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 					token: action.token
 				});
 
-			case "LOG_IN_FROM_STORAGE":
-				return _extends({}, state, {
-					token: action.token
-				});
-
 			case "LOG_IN_FAILURE":
 				return _extends({}, state, {
 					logging: false,
 					error: action.error
+				});
+
+			case "LOG_IN_FROM_STORAGE":
+				return _extends({}, state, {
+					token: action.token
 				});
 
 			case "LOG_OUT_REQUEST":
@@ -64118,6 +64118,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 				return _extends({}, state, {
 					logging: false,
 					error: action.error
+				});
+
+			case "SESSION_EXPIRED":
+				return _extends({}, state, {
+					token: ""
 				});
 
 			default:
@@ -64238,7 +64243,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 							switch (_context.prev = _context.next) {
 								case 0:
 									_context.next = 2;
-									return _reactNative.AsyncStorage.getItem(AuthStorage.userToken);
+									return _reactNative.AsyncStorage.getItem(AuthStorage.sessionToken);
 
 								case 2:
 									return _context.abrupt("return", _context.sent);
@@ -64260,7 +64265,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 							switch (_context2.prev = _context2.next) {
 								case 0:
 									_context2.next = 2;
-									return _reactNative.AsyncStorage.setItem(AuthStorage.userToken, token);
+									return _reactNative.AsyncStorage.setItem(AuthStorage.sessionToken, token);
 
 								case 2:
 									return _context2.abrupt("return", _context2.sent);
@@ -64282,7 +64287,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 							switch (_context3.prev = _context3.next) {
 								case 0:
 									_context3.next = 2;
-									return _reactNative.AsyncStorage.removeItem(AuthStorage.userToken);
+									return _reactNative.AsyncStorage.removeItem(AuthStorage.sessionToken);
 
 								case 2:
 									return _context3.abrupt("return", _context3.sent);
@@ -64301,7 +64306,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 	}();
 
 	exports.default = AuthStorage;
-	AuthStorage.userToken = "user-token";
+	AuthStorage.sessionToken = "session-token";
 },523,[12],"src/app/services/auth-storage.ts");
 __d(function (global, _require, module, exports, _dependencyMap) {
 	Object.defineProperty(exports, "__esModule", {
@@ -64366,8 +64371,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 			key: "render",
 			value: function render() {
 				return _react3.default.createElement(_appNavigator2.default, {
-					ref: function ref(navigatorRef) {
-						return _navigation2.default.setTopLevelNavigator(navigatorRef);
+					ref: function ref(_ref) {
+						return _navigation2.default.setTopLevelNavigator(_ref);
 					}
 				});
 			}
@@ -64431,7 +64436,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 	}, {
 		initialRouteName: "Splash"
 	});
-},525,[526,638,643,647,649,642],"src/app/app-navigator.tsx");
+},525,[526,638,643,649,651,642],"src/app/app-navigator.tsx");
 __d(function (global, _require, module, exports, _dependencyMap) {
   module.exports = {
     get createNavigationContainer() {
@@ -82338,9 +82343,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
 	var _auth = _require(_dependencyMap[5], "../../actions/auth");
 
-	var _styles = _require(_dependencyMap[6], "./styles");
+	var _style = _require(_dependencyMap[6], "./style");
 
-	var _styles2 = _interopRequireDefault(_styles);
+	var _style2 = _interopRequireDefault(_style);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -82443,7 +82448,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 			key: "render",
 			value: function render() {
 				return _react3.default.createElement(_reactNative.View, {
-					style: _styles2.default.splash
+					style: _style2.default.splash
 				}, _react3.default.createElement(_reactNative.ActivityIndicator, {
 					color: "#fff",
 					size: "large"
@@ -82696,7 +82701,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 			justifyContent: "center"
 		}
 	});
-},641,[12,642],"src/app/screens/splash/styles.ts");
+},641,[12,642],"src/app/screens/splash/style.ts");
 __d(function (global, _require, module, exports, _dependencyMap) {
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -82750,9 +82755,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
 	var _auth = _require(_dependencyMap[4], "../../actions/auth");
 
-	var _styles = _require(_dependencyMap[5], "./styles");
+	var _style = _require(_dependencyMap[5], "./style");
 
-	var _styles2 = _interopRequireDefault(_styles);
+	var _style2 = _interopRequireDefault(_style);
 
 	var _button = _require(_dependencyMap[6], "../../components/button");
 
@@ -82797,7 +82802,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
 			var _this = _possibleConstructorReturn(this, (LoginScreen.__proto__ || Object.getPrototypeOf(LoginScreen)).call(this, props));
 
-			_this.inputRef = [];
+			_this.inputRef = {};
 
 			_this.onChangeEmail = function (value) {
 				_this.setState({
@@ -82832,9 +82837,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 				var _this2 = this;
 
 				return _react3.default.createElement(_reactNative.View, {
-					style: _styles2.default.login
+					style: _style2.default.login
 				}, _react3.default.createElement(_reactNative.Text, {
-					style: _styles2.default.loginFormText
+					style: _style2.default.loginFormText
 				}, "Log in with your personal account."), _react3.default.createElement(_textInput2.default, {
 					label: "email",
 					value: this.state.email,
@@ -82852,14 +82857,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 					value: this.state.password,
 					onChangeText: this.onChangePassword,
 					secureTextEntry: true,
-					style: _styles2.default.loginFormPassword,
+					style: _style2.default.loginFormPassword,
 					autoCorrect: false,
 					inputRef: function inputRef(ref) {
 						return _this2.addInputRef("password", ref);
 					},
 					onSubmitEditing: this.logIn
 				}), _react3.default.createElement(_reactNative.View, {
-					style: _styles2.default.loginFormButton
+					style: _style2.default.loginFormButton
 				}, _react3.default.createElement(_button2.default, {
 					title: "Log In",
 					onPress: this.logIn
@@ -82880,7 +82885,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 			dispatch: dispatch
 		};
 	})(LoginScreen);
-},643,[118,130,12,494,639,644,652,645],"src/app/screens/login/index.tsx");
+},643,[118,130,12,494,639,644,645,647],"src/app/screens/login/index.tsx");
 __d(function (global, _require, module, exports, _dependencyMap) {
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -82912,7 +82917,72 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 			marginTop: 40
 		}
 	});
-},644,[12,642],"src/app/screens/login/styles.ts");
+},644,[12,642],"src/app/screens/login/style.ts");
+__d(function (global, _require, module, exports, _dependencyMap) {
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = _require(_dependencyMap[0], "react");
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactNative = _require(_dependencyMap[1], "react-native");
+
+	var _style = _require(_dependencyMap[2], "./style");
+
+	var _style2 = _interopRequireDefault(_style);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Touchable = _reactNative.Platform.OS === "android" ? _reactNative.TouchableNativeFeedback : _reactNative.TouchableOpacity;
+
+	exports.default = function (props) {
+		return props.disabled ? _react2.default.createElement(_reactNative.View, {
+			style: [_style2.default.button, _style2.default.buttonDisabled]
+		}, _react2.default.createElement(_reactNative.Text, {
+			style: [_style2.default.buttonText, _style2.default.buttonTextDisabled]
+		}, props.title)) : _react2.default.createElement(Touchable, {
+			onPress: props.onPress
+		}, _react2.default.createElement(_reactNative.View, {
+			style: _style2.default.button
+		}, _react2.default.createElement(_reactNative.Text, {
+			style: _style2.default.buttonText
+		}, props.title)));
+	};
+},645,[118,12,646],"src/app/components/button/index.tsx");
+__d(function (global, _require, module, exports, _dependencyMap) {
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _reactNative = _require(_dependencyMap[0], "react-native");
+
+	var _colors = _require(_dependencyMap[1], "../../styles/colors");
+
+	var _colors2 = _interopRequireDefault(_colors);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _reactNative.StyleSheet.create({
+		button: {
+			paddingVertical: 10,
+			paddingHorizontal: 15,
+			backgroundColor: _colors2.default.brand.emphasis,
+			borderRadius: 4
+		},
+		buttonDisabled: {
+			backgroundColor: _colors2.default.background.secondary
+		},
+		buttonText: {
+			fontSize: 14,
+			color: _colors2.default.text.bright
+		},
+		buttonTextDisabled: {
+			color: _colors2.default.text.secondary
+		}
+	});
+},646,[12,642],"src/app/components/button/style.ts");
 __d(function (global, _require, module, exports, _dependencyMap) {
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -82930,9 +83000,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
 	var _reactNative = _require(_dependencyMap[2], "react-native");
 
-	var _styles = _require(_dependencyMap[3], "./styles");
+	var _style = _require(_dependencyMap[3], "./style");
 
-	var _styles2 = _interopRequireDefault(_styles);
+	var _style2 = _interopRequireDefault(_style);
 
 	var _colors = _require(_dependencyMap[4], "../../styles/colors");
 
@@ -83033,13 +83103,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 				    value = _props.value,
 				    label = _props.label;
 				return _react3.default.createElement(_reactNative.View, {
-					style: [_styles2.default.textInput, this.props.style]
+					style: [_style2.default.textInput, this.props.style]
 				}, _react3.default.createElement(_reactNative.Animated.Text, {
 					style: textInputLabel
 				}, label.toUpperCase()), _react3.default.createElement(_reactNative.TextInput, {
 					underlineColorAndroid: "transparent",
 					autoCapitalize: "none",
-					style: [_styles2.default.textInputNative],
+					style: [_style2.default.textInputNative],
 					onChangeText: onChangeText,
 					onFocus: this.handleFocus,
 					onBlur: this.handleBlur,
@@ -83057,7 +83127,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 	}(_react3.default.Component));
 
 	exports.default = TextInput;
-},645,[118,130,12,646,642],"src/app/components/text-input/index.tsx");
+},647,[118,130,12,648,642],"src/app/components/text-input/index.tsx");
 __d(function (global, _require, module, exports, _dependencyMap) {
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -83081,7 +83151,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 			borderBottomWidth: _reactNative.StyleSheet.hairlineWidth
 		}
 	});
-},646,[12,642],"src/app/components/text-input/styles.ts");
+},648,[12,642],"src/app/components/text-input/style.ts");
 __d(function (global, _require, module, exports, _dependencyMap) {
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -83107,9 +83177,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
 	var _button2 = _interopRequireDefault(_button);
 
-	var _styles = _require(_dependencyMap[6], "./styles");
+	var _style = _require(_dependencyMap[6], "./style");
 
-	var _styles2 = _interopRequireDefault(_styles);
+	var _style2 = _interopRequireDefault(_style);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -83146,7 +83216,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
 			var _this = _possibleConstructorReturn(this, (HomeScreen.__proto__ || Object.getPrototypeOf(HomeScreen)).apply(this, arguments));
 
-			_this.showMoreApp = function () {
+			_this.details = function () {
 				return _this.props.navigation.navigate("Details");
 			};
 
@@ -83161,10 +83231,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 			key: "render",
 			value: function render() {
 				return _react3.default.createElement(_reactNative.View, {
-					style: _styles2.default.home
+					style: _style2.default.home
 				}, _react3.default.createElement(_button2.default, {
 					title: "Show me more of the app",
-					onPress: this.showMoreApp
+					onPress: this.details
 				}), _react3.default.createElement(_button2.default, {
 					title: "Actually, log me out :)",
 					onPress: this.logOut
@@ -83185,7 +83255,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 			dispatch: dispatch
 		};
 	})(HomeScreen);
-},647,[118,130,494,639,12,652,648],"src/app/screens/home/index.tsx");
+},649,[118,130,494,639,12,645,650],"src/app/screens/home/index.tsx");
 __d(function (global, _require, module, exports, _dependencyMap) {
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -83208,7 +83278,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 			justifyContent: "space-around"
 		}
 	});
-},648,[12,642],"src/app/screens/home/styles.ts");
+},650,[12,642],"src/app/screens/home/style.ts");
 __d(function (global, _require, module, exports, _dependencyMap) {
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -83224,11 +83294,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _reactNative = _require(_dependencyMap[2], "react-native");
+	var _reactRedux = _require(_dependencyMap[2], "react-redux");
 
-	var _styles = _require(_dependencyMap[3], "./styles");
+	var _reactNative = _require(_dependencyMap[3], "react-native");
 
-	var _styles2 = _interopRequireDefault(_styles);
+	var _style = _require(_dependencyMap[4], "./style");
+
+	var _style2 = _interopRequireDefault(_style);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -83270,7 +83342,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 			key: "render",
 			value: function render() {
 				return _react3.default.createElement(_reactNative.View, {
-					style: _styles2.default.other
+					style: _style2.default.other
 				}, _react3.default.createElement(_reactNative.Text, null, "Details"));
 			}
 		}]);
@@ -83278,11 +83350,17 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 		return DetailsScreen;
 	}(_react2.Component));
 
-	exports.default = DetailsScreen;
 	DetailsScreen.navigationOptions = {
 		title: "Details"
 	};
-},649,[118,130,12,650],"src/app/screens/details/index.tsx");
+	exports.default = (0, _reactRedux.connect)(function (state, ownProps) {
+		return {};
+	}, function (dispatch, ownProps) {
+		return {
+			dispatch: dispatch
+		};
+	})(DetailsScreen);
+},651,[118,130,494,12,652],"src/app/screens/details/index.tsx");
 __d(function (global, _require, module, exports, _dependencyMap) {
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -83304,72 +83382,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 			justifyContent: "center"
 		}
 	});
-},650,[12,642],"src/app/screens/details/styles.ts");
-__d(function (global, _require, module, exports, _dependencyMap) {
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = _require(_dependencyMap[0], "react");
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactNative = _require(_dependencyMap[1], "react-native");
-
-	var _styles = _require(_dependencyMap[2], "./styles");
-
-	var _styles2 = _interopRequireDefault(_styles);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Touchable = _reactNative.Platform.OS === "android" ? _reactNative.TouchableNativeFeedback : _reactNative.TouchableOpacity;
-
-	exports.default = function (props) {
-		return props.disabled ? _react2.default.createElement(_reactNative.View, {
-			style: [_styles2.default.button, _styles2.default.buttonDisabled]
-		}, _react2.default.createElement(_reactNative.Text, {
-			style: [_styles2.default.buttonText, _styles2.default.buttonTextDisabled]
-		}, props.title)) : _react2.default.createElement(Touchable, {
-			onPress: props.onPress
-		}, _react2.default.createElement(_reactNative.View, {
-			style: _styles2.default.button
-		}, _react2.default.createElement(_reactNative.Text, {
-			style: _styles2.default.buttonText
-		}, props.title)));
-	};
-},652,[118,12,653],"src/app/components/button/index.tsx");
-__d(function (global, _require, module, exports, _dependencyMap) {
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _reactNative = _require(_dependencyMap[0], "react-native");
-
-	var _colors = _require(_dependencyMap[1], "../../styles/colors");
-
-	var _colors2 = _interopRequireDefault(_colors);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _reactNative.StyleSheet.create({
-		button: {
-			paddingVertical: 10,
-			paddingHorizontal: 15,
-			backgroundColor: _colors2.default.brand.emphasis,
-			borderRadius: 4
-		},
-		buttonDisabled: {
-			backgroundColor: _colors2.default.background.secondary
-		},
-		buttonText: {
-			fontSize: 14,
-			color: _colors2.default.text.bright
-		},
-		buttonTextDisabled: {
-			color: _colors2.default.text.secondary
-		}
-	});
-},653,[12,642],"src/app/components/button/styles.ts");
+},652,[12,642],"src/app/screens/details/style.ts");
 require(52);
 require(11);
 //# sourceMappingURL=index.map

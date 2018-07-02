@@ -6,10 +6,9 @@
 		"module": "es6",
 		"moduleResolution": "node",
 		"noEmit": true,
-		"noImplicitAny": false,
+		"noImplicitAny": true,
 		"target": "es6",
-		"lib": ["es6"],
-		"outDir": "outDir"
+		"lib": ["es6"]
 	},
 	"exclude": ["node_modules"]
 }

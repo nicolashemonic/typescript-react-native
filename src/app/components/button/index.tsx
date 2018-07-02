@@ -7,22 +7,22 @@ import {
 	View
 } from "react-native";
 import { IProps } from "./model";
-import styles from "./styles";
+import style from "./style";
 
 const Touchable =
 	Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
 
 export default (props: IProps) => {
 	return props.disabled ? (
-		<View style={[styles.button, styles.buttonDisabled]}>
-			<Text style={[styles.buttonText, styles.buttonTextDisabled]}>
+		<View style={[style.button, style.buttonDisabled]}>
+			<Text style={[style.buttonText, style.buttonTextDisabled]}>
 				{props.title}
 			</Text>
 		</View>
 	) : (
 		<Touchable onPress={props.onPress}>
-			<View style={styles.button}>
-				<Text style={styles.buttonText}>{props.title}</Text>
+			<View style={style.button}>
+				<Text style={style.buttonText}>{props.title}</Text>
 			</View>
 		</Touchable>
 	);

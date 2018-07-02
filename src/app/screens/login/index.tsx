@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text } from "react-native";
 import { connect } from "react-redux";
 import { logIn } from "../../actions/auth";
-import style from "./styles";
+import style from "./style";
 import Button from "../../components/button";
 import TextInput from "../../components/text-input";
 import { IAppState } from "../../models";
@@ -16,13 +16,13 @@ import {
 } from "./model";
 
 class LoginScreen extends Component<IProps, IState> {
-	inputRef = [];
+	inputRef: { [key: string]: any } = {};
 
 	static navigationOptions = {
 		title: "Log In"
 	};
 
-	constructor(props) {
+	constructor(props: IProps) {
 		super(props);
 		this.state = {
 			email: "",
@@ -30,19 +30,19 @@ class LoginScreen extends Component<IProps, IState> {
 		};
 	}
 
-	onChangeEmail = value => {
+	onChangeEmail = (value: string) => {
 		this.setState({
 			email: value
 		});
 	};
 
-	onChangePassword = value => {
+	onChangePassword = (value: string) => {
 		this.setState({
 			password: value
 		});
 	};
 
-	addInputRef = (id, ref) => {
+	addInputRef = (id: string, ref: Component) => {
 		this.inputRef[id] = ref;
 	};
 

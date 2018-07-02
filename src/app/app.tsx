@@ -6,9 +6,7 @@ export default class App extends React.Component<null, null> {
 	render() {
 		return (
 			<AppNavigator
-				ref={navigatorRef =>
-					NavigationService.setTopLevelNavigator(navigatorRef)
-				}
+				ref={(ref: any) => NavigationService.setTopLevelNavigator(ref)}
 			/>
 		);
 	}

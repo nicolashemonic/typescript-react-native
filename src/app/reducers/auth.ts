@@ -24,16 +24,16 @@ export default function authReducer(
 				logging: false,
 				token: action.token
 			};
-		case "LOG_IN_FROM_STORAGE":
-			return {
-				...state,
-				token: action.token
-			};
 		case "LOG_IN_FAILURE":
 			return {
 				...state,
 				logging: false,
 				error: action.error
+			};
+		case "LOG_IN_FROM_STORAGE":
+			return {
+				...state,
+				token: action.token
 			};
 		case "LOG_OUT_REQUEST":
 			return {
@@ -52,6 +52,11 @@ export default function authReducer(
 				...state,
 				logging: false,
 				error: action.error
+			};
+		case "SESSION_EXPIRED":
+			return {
+				...state,
+				token: ""
 			};
 		default:
 			return state;

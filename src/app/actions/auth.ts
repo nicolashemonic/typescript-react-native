@@ -1,7 +1,7 @@
 import NavigationService from "../services/navigation";
-import { AsyncActionCreator, SyncActionCreator } from "../types";
+import { AsyncActionCreator, SyncActionCreator, Dispatch } from "../types";
 
-const api = dispatch =>
+const api = (dispatch: Dispatch) =>
 	new Promise((resolve, reject) =>
 		setTimeout(() => {
 			const httpResponse200 = () => resolve();

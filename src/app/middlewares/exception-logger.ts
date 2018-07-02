@@ -1,4 +1,9 @@
-export const exceptionLoggerMiddleware = () => next => action => {
+import { AppAction } from "../actions";
+import { Middleware } from "redux";
+
+export const exceptionLoggerMiddleware: Middleware = () => next => (
+	action: AppAction
+) => {
 	try {
 		return next(action);
 	} catch (exception) {

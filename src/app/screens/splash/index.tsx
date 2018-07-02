@@ -5,6 +5,7 @@ import AuthStorage from "../../services/auth-storage";
 import { logInFromStorage } from "../../actions/auth";
 import { IAppState } from "../../models";
 import { Dispatch } from "../../types";
+import style from "./style";
 import {
 	IProps,
 	IState,
@@ -12,10 +13,9 @@ import {
 	IStateProps,
 	IOwnProps
 } from "./model";
-import style from "./styles";
 
 class SplahScreen extends Component<IProps, IState> {
-	constructor(props) {
+	constructor(props: IProps) {
 		super(props);
 		this.bootstrap();
 	}

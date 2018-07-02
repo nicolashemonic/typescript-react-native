@@ -1,7 +1,10 @@
 import AuthStorage from "../services/auth-storage";
 import { AuthAction } from "../actions/auth";
+import { Middleware } from "redux";
 
-export const authStorageMiddleware = () => next => (action: AuthAction) => {
+export const authStorageMiddleware: Middleware = () => next => (
+	action: AuthAction
+) => {
 	switch (action.type) {
 		case "LOG_IN_SUCCESS": {
 			AuthStorage.setToken(action.token);

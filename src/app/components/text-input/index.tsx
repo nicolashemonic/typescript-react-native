@@ -1,13 +1,13 @@
 import React from "react";
 import { TextInput as TextInputNative, View, Animated } from "react-native";
 import { IProps, IState } from "./model";
-import styles from "./styles";
+import style from "./style";
 import colors from "../../styles/colors";
 
 export default class TextInput extends React.Component<IProps, IState> {
 	isFocusedAnimation: Animated.Value;
 
-	constructor(props) {
+	constructor(props: IProps) {
 		super(props);
 		this.state = {
 			isFocused: false
@@ -61,14 +61,14 @@ export default class TextInput extends React.Component<IProps, IState> {
 		} = this.props;
 
 		return (
-			<View style={[styles.textInput, this.props.style]}>
+			<View style={[style.textInput, this.props.style]}>
 				<Animated.Text style={textInputLabel}>
 					{label.toUpperCase()}
 				</Animated.Text>
 				<TextInputNative
 					underlineColorAndroid="transparent"
 					autoCapitalize="none"
-					style={[styles.textInputNative]}
+					style={[style.textInputNative]}
 					onChangeText={onChangeText}
 					onFocus={this.handleFocus}
 					onBlur={this.handleBlur}
