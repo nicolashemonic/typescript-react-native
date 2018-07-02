@@ -1,12 +1,12 @@
 import { NavigationScreenProps } from "react-navigation";
-import { LogInFromStorage } from "../../actions/auth";
+import { Dispatch } from "../../types";
 
 export interface IOwnProps {}
 
 export interface IStateProps {}
 
 export interface IDispatchProps {
-	logInFromStorage: LogInFromStorage;
+	dispatch: Dispatch;
 }
 
 export interface IProps

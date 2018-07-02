@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Button, View, Text } from "react-native";
+import { View, Text } from "react-native";
 import { connect } from "react-redux";
 import { logIn } from "../../actions/auth";
 import style from "./styles";
+import Button from "../../components/button";
 import TextInput from "../../components/text-input";
 import { IAppState } from "../../models";
 import { Dispatch } from "../../types";
@@ -45,7 +46,7 @@ class LoginScreen extends Component<IProps, IState> {
 		this.inputRef[id] = ref;
 	};
 
-	logIn = () => this.props.logIn("email", "password");
+	logIn = () => this.props.dispatch(logIn("email", "password"));
 
 	render() {
 		return (
@@ -73,7 +74,7 @@ class LoginScreen extends Component<IProps, IState> {
 					onSubmitEditing={this.logIn}
 				/>
 				<View style={style.loginFormButton}>
-					<Button color="#028eca" title="Log In" onPress={this.logIn} />
+					<Button title="Log In" onPress={this.logIn} />
 				</View>
 			</View>
 		);
@@ -84,7 +85,7 @@ export default connect<IStateProps, IDispatchProps, IOwnProps, IAppState>(
 	(state, ownProps) => ({}),
 	(dispatch: Dispatch, ownProps) => {
 		return {
-			logIn: (email, password) => dispatch(logIn(email, password))
+			dispatch
 		};
 	}
 )(LoginScreen);

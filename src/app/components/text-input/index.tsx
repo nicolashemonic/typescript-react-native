@@ -1,12 +1,10 @@
 import React from "react";
-
 import { TextInput as TextInputNative, View, Animated } from "react-native";
-
+import { IProps, IState } from "./model";
 import styles from "./styles";
-
 import colors from "../../styles/colors";
 
-export default class TextInput extends React.Component<any, any> {
+export default class TextInput extends React.Component<IProps, IState> {
 	isFocusedAnimation: Animated.Value;
 
 	constructor(props) {

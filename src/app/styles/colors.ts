@@ -1,7 +1,7 @@
 export default {
 	brand: {
-		primary: "#015173",
-		emphasis: "#f76401"
+		primary: "#466365",
+		emphasis: "#B49A67"
 	},
 	text: {
 		primary: "#585858",

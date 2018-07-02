@@ -12,6 +12,8 @@ export type AuthAction =
 	| ReturnType<LogOutSuccess>
 	| ReturnType<LogOutFailure>;
 
+// Log In
+
 export type LogInRequest = () => {
 	type: "LOG_IN_REQUEST";
 };

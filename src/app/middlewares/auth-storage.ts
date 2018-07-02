@@ -1,14 +1,14 @@
-import { AsyncStorage } from "react-native";
+import AuthStorage from "../services/auth-storage";
 import { AuthAction } from "../actions/auth";
 
 export const authStorageMiddleware = () => next => (action: AuthAction) => {
 	switch (action.type) {
 		case "LOG_IN_SUCCESS": {
-			AsyncStorage.setItem("userToken", action.token);
+			AuthStorage.setToken(action.token);
 			break;
 		}
 		case "LOG_OUT_SUCCESS": {
-			AsyncStorage.removeItem("userToken");
+			AuthStorage.removeToken();
 			break;
 		}
 	}

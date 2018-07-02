@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { View, ActivityIndicator, AsyncStorage } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 import { connect } from "react-redux";
+import AuthStorage from "../../services/auth-storage";
 import { logInFromStorage } from "../../actions/auth";
 import { IAppState } from "../../models";
 import { Dispatch } from "../../types";
@@ -20,9 +21,9 @@ class SplahScreen extends Component<IProps, IState> {
 	}
 
 	bootstrap = async () => {
-		const userToken = await AsyncStorage.getItem("userToken");
+		const userToken = await AuthStorage.getToken();
 		if (userToken) {
-			this.props.logInFromStorage(userToken);
+			this.props.dispatch(logInFromStorage(userToken));
 			this.props.navigation.navigate("App");
 		} else {
 			this.props.navigation.navigate("Auth");
@@ -41,7 +42,7 @@ class SplahScreen extends Component<IProps, IState> {
 export default connect<IStateProps, IDispatchProps, IOwnProps, IAppState>(
 	(state, ownProps) => ({}),
 	(dispatch: Dispatch, ownProps) => ({
-		logInFromStorage: token => dispatch(logInFromStorage(token))
+		dispatch
 	})
 )(SplahScreen);
 

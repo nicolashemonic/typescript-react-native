@@ -1,11 +1,12 @@
 import { NavigationScreenProps } from "react-navigation";
+import { Dispatch } from "../../types";
 
 export interface IOwnProps {}
 
 export interface IStateProps {}
 
 export interface IDispatchProps {
-	logIn: (email: string, password: string) => Promise<void>;
+	dispatch: Dispatch;
 }
 
 export interface IProps

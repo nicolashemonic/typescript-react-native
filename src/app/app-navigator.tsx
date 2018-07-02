@@ -7,12 +7,13 @@ import SplashScreen from "./screens/splash";
 import LogInScreen from "./screens/login";
 import HomeScreen from "./screens/home";
 import DetailsScreen from "./screens/details";
+import colors from "./styles/colors";
 
 const navigationOptions: NavigationScreenOptions = {
 	headerStyle: {
-		backgroundColor: "#028eca"
+		backgroundColor: colors.brand.primary
 	},
-	headerTintColor: "#fff"
+	headerTintColor: colors.text.bright
 };
 
 const AppStack = createStackNavigator(
@@ -24,6 +25,7 @@ const AppStack = createStackNavigator(
 		navigationOptions: navigationOptions
 	}
 );
+
 const AuthStack = createStackNavigator(
 	{ LogIn: LogInScreen },
 	{
