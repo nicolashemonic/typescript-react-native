@@ -1,4 +1,4 @@
-# React Native TypeScript
+# TypeScript React Native
 
 A React Native authentication flow example using TypeScript, Redux and React Navigation.
 

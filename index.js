@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
 import Root from './src/app';
 
-AppRegistry.registerComponent('ReactNativeTypescript', () => Root);
+AppRegistry.registerComponent('TypescriptReactNative', () => Root);

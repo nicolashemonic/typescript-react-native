@@ -1,4 +1,4 @@
-package com.reactnativetypescript;
+package com.typescriptreactnative;
 
 import android.app.Application;
 

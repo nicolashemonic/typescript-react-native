@@ -1429,7 +1429,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-  _reactNative.AppRegistry.registerComponent('ReactNativeTypescript', function () {
+  _reactNative.AppRegistry.registerComponent('TypescriptReactNative', function () {
     return _app2.default;
   });
 },11,[12,493],"index.js");
